@@ -1,5 +1,5 @@
 {
-    "name": "sakai-vue",
+    "name": "hyoga",
     "version": "3.10.0",
     "scripts": {
         "dev": "vite",
