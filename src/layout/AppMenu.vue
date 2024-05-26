@@ -6,11 +6,12 @@ import AppMenuItem from './AppMenuItem.vue';
 const model = ref([
     {
         items: [
-            { label: 'Visão Geral', icon: 'pi pi-fw pi-chart-bar', to: '/' },
-            { label: 'Carteira', icon: 'pi pi-fw pi-wallet', to: '/carteira' },
-            { label: 'Configurações', icon: 'pi pi-fw pi-chart-pie', to: '/configuracoes' },
-            { label: 'Aporte', icon: 'pi pi-fw pi-shopping-cart', to: '/aporte' },
-            { label: 'Proventos', icon: 'pi pi-fw pi-dollar', to: '/proventos' }
+            { label: 'Simuladores', icon: 'pi pi-fw pi-calculator', to: '/' }
+            // { label: 'Visão Geral', icon: 'pi pi-fw pi-chart-bar', to: '/' },
+            // { label: 'Carteira', icon: 'pi pi-fw pi-wallet', to: '/carteira' },
+            // { label: 'Configurações', icon: 'pi pi-fw pi-chart-pie', to: '/configuracoes' },
+            // { label: 'Aporte', icon: 'pi pi-fw pi-shopping-cart', to: '/aporte' },
+            // { label: 'Proventos', icon: 'pi pi-fw pi-dollar', to: '/proventos' }
         ]
     }
 ]);

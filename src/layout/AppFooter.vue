@@ -2,9 +2,9 @@
 
 <template>
     <div class="layout-footer">
-        <span class="font-bold mr-2">Hyoga</span>
-        by
-        <span class="font-medium ml-2">PrimeVue</span>
+        <span class="mr-2">Finanças e Investimentos</span>
+        é
+        <span class="font-bold ml-2">Hyoga</span>
     </div>
 </template>
 <style lang="scss" scoped></style>

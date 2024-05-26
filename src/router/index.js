@@ -9,8 +9,13 @@ const router = createRouter({
             component: AppLayout,
             children: [
                 {
-                    path: '/',
-                    name: 'home',
+                    path: '',
+                    name: 'calculations',
+                    component: () => import('@/views/Simulators.vue')
+                },
+                {
+                    path: '/dashboard',
+                    name: 'dashboard',
                     component: () => import('@/views/Dashboard.vue')
                 },
                 {
