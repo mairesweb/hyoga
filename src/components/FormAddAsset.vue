@@ -13,7 +13,13 @@ export default defineComponent({
     emits: ['addedAsset'],
     data() {
         return {
-            form: {} as Asset,
+            form: {
+                code: '',
+                custody: 0,
+                weight: 0,
+                number: 0,
+                percentageClass: 0
+            } as Asset,
             walletGoalTable: appDatabase.walletGoalTable,
             walletGoal: [] as WalletGoal[]
         };
@@ -30,9 +36,21 @@ export default defineComponent({
             this.walletGoal[this.walletIndex].data.assets.push(this.form);
             this.$emit('addedAsset', [this.walletGoal[this.walletIndex].data.assets, this.walletIndex]);
             this.saveDatabase();
+            this.$nextTick(() => {
+                this.reset();
+            });
         },
         saveDatabase() {
             this.walletGoalTable.bulkPut(toRaw(this.walletGoal));
+        },
+        reset() {
+            this.form = {
+                code: '',
+                custody: 0,
+                weight: 0,
+                number: 0,
+                percentageClass: 0
+            };
         }
     }
 });

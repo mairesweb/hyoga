@@ -21,17 +21,7 @@ export default {
             .then((walletGoal) => {
                 if (walletGoal.length < 1) {
                     this.walletGoal = [
-                        {
-                            key: '00Acoes',
-                            data: {
-                                label: 'Ações',
-                                percentage: 0,
-                                assets: [
-                                    { number: 1, code: 'PETR4', custody: 0, weight: 5, percentageClass: 50 },
-                                    { number: 2, code: 'VALE3', custody: 0, weight: 5, percentageClass: 50 }
-                                ]
-                            }
-                        },
+                        { key: '00Acoes', data: { label: 'Ações', percentage: 0, assets: [] } },
                         { key: '01FIIs', data: { label: 'FIIs', percentage: 0, assets: [] } },
                         { key: '02Stocks', data: { label: 'Stocks', percentage: 0, assets: [] } },
                         { key: '03Reits', data: { label: 'REITs', percentage: 0, assets: [] } },
