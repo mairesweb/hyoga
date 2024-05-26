@@ -184,8 +184,8 @@ export default {
                     <InputGroupAddon>%</InputGroupAddon>
                 </InputGroup>
             </div>
-            <div className="field col-4 mt-3">
-                <div class="flex align-items-center">
+            <div className="field col-12 mt-3">
+                <div class="flex flex-wrap sm:flex-nowrap" style="max-width: 500px">
                     <Button label="Calcular" @click="calculate" />
                     <Button label="Limpar" @click="clearFields" link />
                 </div>
