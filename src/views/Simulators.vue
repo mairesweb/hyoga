@@ -97,6 +97,11 @@ export default {
 </script>
 
 <template>
+    <div>
+        <amp-ad width="100vw" height="320" type="adsense" data-ad-client="ca-pub-2781432625181032" data-ad-slot="5627803764" data-auto-format="rspv" data-full-width="">
+            <div overflow=""></div>
+        </amp-ad>
+    </div>
     <div className="card">
         <h4>Simulador de investimentos</h4>
         <div className="p-fluid formgrid grid">
