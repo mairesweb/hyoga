@@ -2,6 +2,7 @@
 import { formatCurrency } from '@/utils/Numbers';
 
 export default {
+    name: 'BasicInvestimentSimulator',
     data() {
         return {
             investimentType: 'tributado',
@@ -97,13 +98,10 @@ export default {
 </script>
 
 <template>
-    <div>
-        <amp-ad width="100vw" height="320" type="adsense" data-ad-client="ca-pub-2781432625181032" data-ad-slot="5627803764" data-auto-format="rspv" data-full-width="">
-            <div overflow=""></div>
-        </amp-ad>
-    </div>
+    <Adsense data-ad-client="ca-pub-2781432625181032" data-ad-slot="5627803764" data-ad-format="auto" data-full-width-responsive="true"></Adsense>
     <div className="card">
         <h4>Simulador de investimentos</h4>
+        <p>Simule o rendimento de um investimento com base no tipo de investimento, valor inicial, valor mensal, prazo e rentabilidade.</p>
         <div className="p-fluid formgrid grid">
             <div className="field col-12 md:col-6">
                 <label htmlFor="investmentType">Tipo de investimento</label>
@@ -151,28 +149,28 @@ export default {
                 </div>
             </div>
             <div className="field col-12 md:col-6">
-                <label htmlFor="investmentValue">Investimento inicial</label>
+                <label>Investimento inicial</label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
                     <InputNumber v-model="investimentInitial" locale="pt-BR" :minFractionDigits="2" :maxFractionDigits="2" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-6">
-                <label htmlFor="investmentValue">Investimento mensal</label>
+                <label>Investimento mensal</label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
                     <InputNumber v-model="investimentMonthly" locale="pt-BR" :minFractionDigits="2" :maxFractionDigits="2" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-6">
-                <label htmlFor="investmentValue">Prazo</label>
+                <label>Prazo</label>
                 <InputGroup>
                     <InputNumber v-model="investimentTime.value" />
                     <SelectButton v-model="investimentTime.option" :options="optionsTime" aria-labelledby="basic" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-6">
-                <label htmlFor="investmentValue">Rentabilidade <i class="pi pi-question-circle" v-tooltip="'Para CDI é considerado 0,8% ao mês e para IPCA é considerado 0,45% ao mês.'"></i></label>
+                <label>Rentabilidade <i class="pi pi-question-circle" v-tooltip="'Para CDI é considerado 0,8% ao mês e para IPCA é considerado 0,45% ao mês.'"></i></label>
                 <InputGroup v-if="preOuPos === 'prefixado'">
                     <InputNumber v-model="profitability" :minFractionDigits="2" :maxFractionDigits="2" />
                     <InputGroupAddon>%</InputGroupAddon>
@@ -195,35 +193,37 @@ export default {
                     <Button label="Limpar" @click="clearFields" link />
                 </div>
             </div>
+        </div>
+        <div class="p-fluid grid">
             <div className="col-12 mt-5 result" v-if="resultSimulation.total">
                 <h4>Resultado</h4>
                 <div class="grid mt-3">
-                    <div class="col-4">
+                    <div class="col-12 md:col-6 xl:col-4">
                         <Fieldset legend="Patrimônio total bruto">
                             <h5>{{ formatCurrency(resultSimulation.total) }}</h5>
                         </Fieldset>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 md:col-6 xl:col-4">
                         <Fieldset legend="Valor investido">
                             <h5 class="negative">{{ formatCurrency(resultSimulation.invested) }}</h5>
                         </Fieldset>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 md:col-6 xl:col-4">
                         <Fieldset legend="Valor em juros">
                             <h5 class="positive">{{ formatCurrency(resultSimulation.fees) }}</h5>
                         </Fieldset>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 md:col-6 xl:col-4">
                         <Fieldset legend="Taxa de imposto de renda">
                             <h5>{{ resultSimulation.taxesPercentage }}</h5>
                         </Fieldset>
                     </div>
-                    <div class="col-4">
-                        <Fieldset legend="Valor pago em imposto de renda">
+                    <div class="col-12 md:col-6 xl:col-4">
+                        <Fieldset legend="Imposto de renda pago">
                             <h5 class="negative">{{ formatCurrency(resultSimulation.taxes) }}</h5>
                         </Fieldset>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 md:col-6 xl:col-4">
                         <Fieldset legend="Patrimônio total líquido">
                             <h5 class="positive">{{ formatCurrency(resultSimulation.liquidity) }}</h5>
                         </Fieldset>
@@ -236,7 +236,6 @@ export default {
 
 <style scoped lang="scss">
 .result {
-    border: 1px solid var(--color-primary);
     .grid {
         h5 {
             text-align: center;
