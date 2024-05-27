@@ -5,18 +5,18 @@ export default {
     name: 'MonthlyInvestimentSimulator',
     data() {
         return {
-            goalEquity: null,
+            goalEquity: null as number | null,
             investimentTime: { value: 1, option: 'Meses' },
-            profitability: null,
+            profitability: null as number | null,
             optionsTime: ['Meses', 'Anos'],
-            resultSimulation: null
+            resultSimulation: null as number | null
         };
     },
     methods: {
         calculate() {
             const investimentTime = this.investimentTime.option === 'Meses' ? this.investimentTime.value : this.investimentTime.value * 12;
-            const profitability = this.profitability / 100;
-            this.resultSimulation = this.goalEquity / ((Math.pow(1 + profitability, investimentTime) - 1) / profitability);
+            const profitability = (this.profitability as number) / 100;
+            this.resultSimulation = (this.goalEquity as number) / ((Math.pow(1 + profitability, investimentTime) - 1) / profitability);
         },
         clearFields() {
             this.goalEquity = 0;
@@ -33,6 +33,7 @@ export default {
 </script>
 
 <template>
+    <Adsense data-ad-client="ca-pub-2781432625181032" data-ad-slot="5627803764" data-ad-format="auto" data-full-width-responsive="true"></Adsense>
     <div className="card">
         <h4>Simulador de Aporte Mensal</h4>
         <p>O resultado mostrará quanto você deverá investir mensalmente a fim de atingir um patrimônio "alvo" atribuído por você.</p>

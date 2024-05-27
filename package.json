@@ -15,7 +15,9 @@
         "primeicons": "^6.0.1",
         "primevue": "^3.52.0",
         "vue": "^3.2.41",
-        "vue-router": "^4.1.5"
+        "vue-google-adsense": "^2.0.0",
+        "vue-router": "^4.1.5",
+        "vue-scriptx": "^0.2.5"
     },
     "devDependencies": {
         "@rushstack/eslint-patch": "^1.1.4",

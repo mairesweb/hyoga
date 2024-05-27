@@ -3,16 +3,16 @@ export default {
     name: 'UsufructSimulator',
     data() {
         return {
-            equity: null,
-            profitability: null,
-            monthlyWithdrawal: null,
-            resultSimulation: null
+            equity: null as number | null,
+            profitability: null as number | null,
+            monthlyWithdrawal: null as number | null,
+            resultSimulation: null as any
         };
     },
     methods: {
         calculate() {
-            const profitability = this.profitability / 100;
-            const result = Math.floor(Math.log(this.monthlyWithdrawal / (this.monthlyWithdrawal - this.equity * profitability)) / Math.log(1 + profitability));
+            const profitability = (this.profitability as number) / 100;
+            const result = Math.floor(Math.log((this.monthlyWithdrawal as number) / ((this.monthlyWithdrawal as number) - (this.equity as number) * profitability)) / Math.log(1 + profitability));
 
             this.resultSimulation = !isNaN(this.resultSimulation) ? 'Pelo resto da vida' : this.formatYearsAndMonths(result);
         },
@@ -23,7 +23,7 @@ export default {
             this.resultSimulation = null;
         },
         // função que transforma meses em anos e meses
-        formatYearsAndMonths(months) {
+        formatYearsAndMonths(months: number) {
             const years = Math.floor(months / 12);
             const remainingMonths = months % 12;
             if (years === 0) return `${remainingMonths} m${remainingMonths > 1 ? 'e' : 'ê'}s${remainingMonths > 1 ? 'es' : ''}`;
@@ -35,6 +35,7 @@ export default {
 </script>
 
 <template>
+    <Adsense data-ad-client="ca-pub-2781432625181032" data-ad-slot="5627803764" data-ad-format="auto" data-full-width-responsive="true"></Adsense>
     <div className="card">
         <h4>Simulador de Usufruto ou Fruição</h4>
         <p>O resultado mostrará quanto tempo você conseguirá usufruir de uma renda pré-determinada, com base em um patrimônio acumulado.</p>

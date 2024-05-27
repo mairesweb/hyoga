@@ -110,6 +110,8 @@ import VirtualScroller from 'primevue/virtualscroller';
 import BlockViewer from '@/components/BlockViewer.vue';
 
 import '@/assets/styles.scss';
+import ScriptX from 'vue-scriptx';
+import Ads from 'vue-google-adsense';
 
 const app = createApp(App);
 
@@ -119,6 +121,10 @@ app.use(PrimeVue, { ripple: true });
 app.use(ToastService);
 app.use(DialogService);
 app.use(ConfirmationService);
+app.use(ScriptX);
+app.use(Ads.Adsense);
+app.use(Ads.InArticleAdsense);
+app.use(Ads.InFeedAdsense);
 
 app.directive('tooltip', Tooltip);
 app.directive('badge', BadgeDirective);
