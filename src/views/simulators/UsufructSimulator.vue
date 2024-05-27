@@ -13,8 +13,9 @@ export default {
         calculate() {
             const profitability = (this.profitability as number) / 100;
             const result = Math.floor(Math.log((this.monthlyWithdrawal as number) / ((this.monthlyWithdrawal as number) - (this.equity as number) * profitability)) / Math.log(1 + profitability));
+            console.log(result);
 
-            this.resultSimulation = !isNaN(this.resultSimulation) ? 'Pelo resto da vida' : this.formatYearsAndMonths(result);
+            this.resultSimulation = isNaN(result) || result === Infinity ? 'Pelo resto da vida' : this.formatYearsAndMonths(result);
         },
         clearFields() {
             this.equity = null;
