@@ -231,7 +231,9 @@ export default {
             </div>
         </div>
     </div>
-    <Adsense data-ad-client="ca-pub-2781432625181032" data-ad-slot="5627803764" data-ad-format="auto" data-full-width-responsive="true"></Adsense>
+    <div class="p-fluid">
+        <Adsense data-ad-client="ca-pub-2781432625181032" data-ad-slot="5627803764" data-ad-format="auto" data-full-width-responsive="true"></Adsense>
+    </div>
 </template>
 
 <style scoped lang="scss">
