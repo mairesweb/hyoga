@@ -33,7 +33,6 @@ export default {
 </script>
 
 <template>
-    <Adsense data-ad-client="ca-pub-2781432625181032" data-ad-slot="5627803764" data-ad-format="auto" data-full-width-responsive="true"></Adsense>
     <div className="card">
         <h4>Simulador de Aporte Mensal</h4>
         <p>O resultado mostrará quanto você deverá investir mensalmente a fim de atingir um patrimônio "alvo" atribuído por você.</p>
@@ -77,6 +76,7 @@ export default {
             </div>
         </div>
     </div>
+    <Adsense data-ad-client="ca-pub-2781432625181032" data-ad-slot="5627803764" data-ad-format="auto" data-full-width-responsive="true"></Adsense>
 </template>
 
 <style scoped lang="scss">
