@@ -35,7 +35,6 @@ export default {
 </script>
 
 <template>
-    <Adsense data-ad-client="ca-pub-2781432625181032" data-ad-slot="5627803764" data-ad-format="auto" data-full-width-responsive="true"></Adsense>
     <div className="card">
         <h4>Simulador de Usufruto ou Fruição</h4>
         <p>O resultado mostrará quanto tempo você conseguirá usufruir de uma renda pré-determinada, com base em um patrimônio acumulado.</p>
@@ -79,6 +78,7 @@ export default {
             </div>
         </div>
     </div>
+    <Adsense data-ad-client="ca-pub-2781432625181032" data-ad-slot="5627803764" data-ad-format="auto" data-full-width-responsive="true"></Adsense>
 </template>
 
 <style scoped lang="scss">

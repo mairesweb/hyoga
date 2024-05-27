@@ -98,7 +98,6 @@ export default {
 </script>
 
 <template>
-    <Adsense data-ad-client="ca-pub-2781432625181032" data-ad-slot="5627803764" data-ad-format="auto" data-full-width-responsive="true"></Adsense>
     <div className="card">
         <h4>Simulador de investimentos</h4>
         <p>Simule o rendimento de um investimento com base no tipo de investimento, valor inicial, valor mensal, prazo e rentabilidade.</p>
@@ -232,6 +231,7 @@ export default {
             </div>
         </div>
     </div>
+    <Adsense data-ad-client="ca-pub-2781432625181032" data-ad-slot="5627803764" data-ad-format="auto" data-full-width-responsive="true"></Adsense>
 </template>
 
 <style scoped lang="scss">
