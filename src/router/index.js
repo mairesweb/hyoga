@@ -10,8 +10,18 @@ const router = createRouter({
             children: [
                 {
                     path: '',
-                    name: 'calculations',
-                    component: () => import('@/views/Simulators.vue')
+                    name: 'basic-investiment-simulator',
+                    component: () => import('@/views/simulators/BasicInvestimentSimulator.vue')
+                },
+                {
+                    path: '/simulador-aporte-mensal',
+                    name: 'monthly-investiment-simulator',
+                    component: () => import('@/views/simulators/MonthlyInvestimentSimulator.vue')
+                },
+                {
+                    path: '/simulador-usufruto',
+                    name: 'usufruct-simulator',
+                    component: () => import('@/views/simulators/UsufructSimulator.vue')
                 },
                 {
                     path: '/dashboard',
