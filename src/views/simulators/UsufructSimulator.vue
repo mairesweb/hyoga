@@ -4,14 +4,21 @@ export default {
     data() {
         return {
             equity: null as number | null,
-            profitability: null as number | null,
+            optionsProfitability: [
+                { name: 'a.m.', code: 'a.m.' },
+                { name: 'a.a.', code: 'a.a.' }
+            ],
+            profitability: {
+                value: null as number | null,
+                option: { name: 'a.m.', code: 'a.m.' }
+            },
             monthlyWithdrawal: null as number | null,
             resultSimulation: null as any
         };
     },
     methods: {
         calculate() {
-            const profitability = (this.profitability as number) / 100;
+            const profitability = this.profitability.option.name === 'a.m.' ? (this.profitability.value as number) / 100 : this.convertTaxeToMonthly(this.profitability.value as number);
             const result = Math.floor(Math.log((this.monthlyWithdrawal as number) / ((this.monthlyWithdrawal as number) - (this.equity as number) * profitability)) / Math.log(1 + profitability));
             console.log(result);
 
@@ -19,7 +26,10 @@ export default {
         },
         clearFields() {
             this.equity = null;
-            this.profitability = null;
+            this.profitability = {
+                value: null,
+                option: { name: 'a.m.', code: 'a.m.' }
+            };
             this.monthlyWithdrawal = null;
             this.resultSimulation = null;
         },
@@ -30,6 +40,9 @@ export default {
             if (years === 0) return `${remainingMonths} m${remainingMonths > 1 ? 'e' : 'ê'}s${remainingMonths > 1 ? 'es' : ''}`;
             if (remainingMonths === 0) return `${years} ano${years > 1 ? 's' : ''}`;
             return `${years} ano${years > 1 ? 's' : ''} e ${remainingMonths} m${remainingMonths > 1 ? 'e' : 'ê'}s${remainingMonths > 1 ? 'es' : ''}`;
+        },
+        convertTaxeToMonthly(taxe: number) {
+            return Math.pow(1 + taxe / 100, 1 / 12) - 1;
         }
     }
 };
@@ -44,21 +57,22 @@ export default {
                 <label>Patrimônio</label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="equity" locale="pt-BR" :minFractionDigits="2" :maxFractionDigits="2" />
+                    <InputNumber v-model="equity" locale="pt-BR" :maxFractionDigits="2" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-4">
                 <label>Rentabilidade <i class="pi pi-question-circle" v-tooltip="'Taxa de rentabilidade onde o patrimônio está aplicado'"></i></label>
                 <InputGroup>
-                    <InputNumber v-model="profitability" :minFractionDigits="2" :maxFractionDigits="2" />
+                    <InputNumber v-model="profitability.value" locale="pt-BR" :maxFractionDigits="2" />
                     <InputGroupAddon>%</InputGroupAddon>
+                    <Dropdown v-model="profitability.option" :options="optionsProfitability" optionLabel="name" class="w-7rem" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-4">
                 <label>Retirada mensal <i class="pi pi-question-circle" v-tooltip="'Quanto você deseja retirar por mês'"></i></label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="monthlyWithdrawal" locale="pt-BR" :minFractionDigits="2" :maxFractionDigits="2" />
+                    <InputNumber v-model="monthlyWithdrawal" locale="pt-BR" :maxFractionDigits="2" />
                 </InputGroup>
             </div>
             <div className="field col-12 mt-3">
