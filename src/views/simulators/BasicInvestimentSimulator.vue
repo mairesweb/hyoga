@@ -14,7 +14,14 @@ export default {
                 option: 'Meses'
             },
             optionsTime: ['Meses', 'Anos'],
-            profitability: null as number | null,
+            optionsProfitability: [
+                { name: 'a.m.', code: 'a.m.' },
+                { name: 'a.a.', code: 'a.a.' }
+            ],
+            profitability: {
+                value: null as number | null,
+                option: { name: 'a.m.', code: 'a.m.' }
+            },
             resultSimulation: {
                 total: 0,
                 invested: 0,
@@ -30,7 +37,10 @@ export default {
             this.investimentInitial = null;
             this.investimentMonthly = null;
             this.investimentTime.value = 1;
-            this.profitability = null;
+            this.profitability = {
+                value: null,
+                option: { name: 'a.m.', code: 'a.m.' }
+            };
         },
         calculate() {
             this.resultSimulation.total = this.calculateFutureValue();
@@ -41,11 +51,12 @@ export default {
         },
         getTaxe() {
             if (this.preOuPos === 'prefixado') {
-                return (this.profitability as number) / 100;
+                const profitabilityMonthly = this.profitability.option.name === 'a.m.' ? (this.profitability.value as number) / 100 : this.convertTaxeToMonthly(this.profitability.value as number);
+                return profitabilityMonthly;
             } else if (this.preOuPos === 'cdi') {
-                return 0.008;
+                return ((this.profitability.value as number) / 100) * 0.008;
             } else {
-                return 0.0045;
+                return this.convertTaxeToMonthly(this.profitability.value as number) + 0.0045;
             }
         },
         getTime() {
@@ -87,12 +98,20 @@ export default {
             }
 
             return 0;
+        },
+        convertTaxeToMonthly(taxe: number) {
+            return Math.pow(1 + taxe / 100, 1 / 12) - 1;
         }
     },
     setup() {
         return {
             formatCurrency
         };
+    },
+    watch: {
+        preOuPos(newValue) {
+            this.profitability.option = newValue === 'prefixado' ? this.optionsProfitability[0] : this.optionsProfitability[1];
+        }
     }
 };
 </script>
@@ -106,14 +125,14 @@ export default {
                 <label htmlFor="investmentType">Tipo de investimento</label>
                 <div class="flex flex-wrap gap-3">
                     <div class="flex align-items-center">
-                        <RadioButton v-model="investimentType" name="investimentType" value="tributado" />
+                        <RadioButton v-model="investimentType" inputId="tributado" name="investimentType" value="tributado" />
                         <label for="tributado" class="ml-2">
                             Tributado
                             <i class="pi pi-question-circle" v-tooltip="'Investimentos em CDB, RDB, Tesouro Direto e Debêntures'"></i>
                         </label>
                     </div>
                     <div class="flex align-items-center">
-                        <RadioButton v-model="investimentType" name="investimentType" value="isento" />
+                        <RadioButton v-model="investimentType" inputId="isento" name="investimentType" value="isento" />
                         <label for="isento" class="ml-2">
                             Isento
                             <i class="pi pi-question-circle" v-tooltip="'Investimentos em LCI, LCA, LC, CRA e CRI'"></i>
@@ -125,21 +144,21 @@ export default {
                 <label htmlFor="investmentType">É Préfixado ou Pós-fixado?</label>
                 <div class="flex flex-wrap gap-3">
                     <div class="flex align-items-center">
-                        <RadioButton v-model="preOuPos" name="preOuPos" value="prefixado" />
+                        <RadioButton v-model="preOuPos" inputId="prefixado" name="preOuPos" value="prefixado" />
                         <label for="prefixado" class="ml-2">
                             Préfixado
                             <i class="pi pi-question-circle" v-tooltip="'Rendem de acordo a uma taxa fixa pré-estabelecida'"></i>
                         </label>
                     </div>
                     <div class="flex align-items-center">
-                        <RadioButton v-model="preOuPos" name="preOuPos" value="cdi" />
+                        <RadioButton v-model="preOuPos" inputId="cdi" name="preOuPos" value="cdi" />
                         <label for="cdi" class="ml-2">
                             CDI
                             <i class="pi pi-question-circle" v-tooltip="'Rendem de acordo ao CDI (relacionado ao Selic)'"></i>
                         </label>
                     </div>
                     <div class="flex align-items-center">
-                        <RadioButton v-model="preOuPos" name="preOuPos" value="ipca" />
+                        <RadioButton v-model="preOuPos" inputId="ipca" name="preOuPos" value="ipca" />
                         <label for="ipca" class="ml-2">
                             IPCA
                             <i class="pi pi-question-circle" v-tooltip="'Rendem de acordo ao IPCA (relacionado a inflação)'"></i>
@@ -151,14 +170,14 @@ export default {
                 <label>Investimento inicial</label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="investimentInitial" locale="pt-BR" :minFractionDigits="2" :maxFractionDigits="2" />
+                    <InputNumber v-model="investimentInitial" locale="pt-BR" :maxFractionDigits="2" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-6">
                 <label>Investimento mensal</label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="investimentMonthly" locale="pt-BR" :minFractionDigits="2" :maxFractionDigits="2" />
+                    <InputNumber v-model="investimentMonthly" locale="pt-BR" :maxFractionDigits="2" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-6">
@@ -170,20 +189,14 @@ export default {
             </div>
             <div className="field col-12 md:col-6">
                 <label>Rentabilidade <i class="pi pi-question-circle" v-tooltip="'Para CDI é considerado 0,8% ao mês e para IPCA é considerado 0,45% ao mês.'"></i></label>
-                <InputGroup v-if="preOuPos === 'prefixado'">
-                    <InputNumber v-model="profitability" :minFractionDigits="2" :maxFractionDigits="2" />
+                <InputGroup>
+                    <InputGroupAddon v-if="preOuPos === 'ipca'">5,54</InputGroupAddon>
+                    <InputGroupAddon v-if="preOuPos === 'ipca'">+</InputGroupAddon>
+                    <InputNumber v-model="profitability.value" locale="pt-BR" :maxFractionDigits="2" />
                     <InputGroupAddon>%</InputGroupAddon>
-                </InputGroup>
-                <InputGroup v-else-if="preOuPos === 'cdi'">
-                    <InputNumber v-model="profitability" :minFractionDigits="2" :maxFractionDigits="2" />
-                    <InputGroupAddon>%</InputGroupAddon>
-                    <InputGroupAddon>CDI</InputGroupAddon>
-                </InputGroup>
-                <InputGroup v-else>
-                    <InputGroupAddon>IPCA</InputGroupAddon>
-                    <InputGroupAddon>+</InputGroupAddon>
-                    <InputNumber v-model="profitability" :minFractionDigits="2" :maxFractionDigits="2" />
-                    <InputGroupAddon>%</InputGroupAddon>
+                    <InputGroupAddon v-if="preOuPos === 'cdi'">CDI</InputGroupAddon>
+                    <Dropdown v-if="preOuPos === 'prefixado'" v-model="profitability.option" :options="optionsProfitability" optionLabel="name" class="w-7rem" />
+                    <InputGroupAddon v-if="preOuPos === 'ipca'">a.a.</InputGroupAddon>
                 </InputGroup>
             </div>
             <div className="field col-12 mt-3">

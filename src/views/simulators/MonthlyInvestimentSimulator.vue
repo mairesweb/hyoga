@@ -7,7 +7,14 @@ export default {
         return {
             goalEquity: null as number | null,
             investimentTime: { value: 1, option: 'Meses' },
-            profitability: null as number | null,
+            optionsProfitability: [
+                { name: 'a.m.', code: 'a.m.' },
+                { name: 'a.a.', code: 'a.a.' }
+            ],
+            profitability: {
+                value: null as number | null,
+                option: { name: 'a.m.', code: 'a.m.' }
+            },
             optionsTime: ['Meses', 'Anos'],
             resultSimulation: null as number | null
         };
@@ -15,15 +22,21 @@ export default {
     methods: {
         calculate() {
             const investimentTime = this.investimentTime.option === 'Meses' ? this.investimentTime.value : this.investimentTime.value * 12;
-            const profitability = (this.profitability as number) / 100;
+            const profitability = this.profitability.option.name === 'a.m.' ? (this.profitability.value as number) / 100 : this.convertTaxeToMonthly(this.profitability.value as number);
             this.resultSimulation = (this.goalEquity as number) / ((Math.pow(1 + profitability, investimentTime) - 1) / profitability);
         },
         clearFields() {
             this.goalEquity = 0;
             this.investimentTime.value = 0;
             this.investimentTime.option = 'Meses';
-            this.profitability = 0;
+            this.profitability = {
+                value: null,
+                option: { name: 'a.m.', code: 'a.m.' }
+            };
             this.resultSimulation = null;
+        },
+        convertTaxeToMonthly(taxe: number) {
+            return Math.pow(1 + taxe / 100, 1 / 12) - 1;
         }
     },
     setup() {
@@ -41,21 +54,22 @@ export default {
                 <label>Patrimônio "alvo"</label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="goalEquity" locale="pt-BR" :minFractionDigits="2" :maxFractionDigits="2" />
+                    <InputNumber v-model="goalEquity" locale="pt-BR" :maxFractionDigits="2" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-4">
                 <label>Prazo</label>
                 <InputGroup>
-                    <InputNumber v-model="investimentTime.value" />
+                    <InputNumber v-model="investimentTime.value" locale="pt-BR" />
                     <SelectButton v-model="investimentTime.option" :options="optionsTime" aria-labelledby="basic" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-4">
                 <label>Rentabilidade</label>
                 <InputGroup>
-                    <InputNumber v-model="profitability" :minFractionDigits="2" :maxFractionDigits="2" />
+                    <InputNumber v-model="profitability.value" locale="pt-BR" :maxFractionDigits="2" />
                     <InputGroupAddon>%</InputGroupAddon>
+                    <Dropdown v-model="profitability.option" :options="optionsProfitability" optionLabel="name" class="w-7rem" />
                 </InputGroup>
             </div>
             <div className="field col-12 mt-3">
