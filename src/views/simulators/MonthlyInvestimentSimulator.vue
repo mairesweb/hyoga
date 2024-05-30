@@ -65,7 +65,7 @@ export default {
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-4">
-                <label>Rentabilidade</label>
+                <label>Rentabilidade <i class="pi pi-question-circle" v-tooltip.focus.top="'Taxa de rentabilidade onde o dinheiro será aplicado.'" tabindex="2"></i></label>
                 <InputGroup>
                     <InputNumber v-model="profitability.value" locale="pt-BR" :maxFractionDigits="2" />
                     <InputGroupAddon>%</InputGroupAddon>

@@ -24,6 +24,11 @@ const router = createRouter({
                     component: () => import('@/views/simulators/UsufructSimulator.vue')
                 },
                 {
+                    path: '/simulador-compra-parcelada',
+                    name: 'partial-payment-simulator',
+                    component: () => import('@/views/simulators/PartialPaymentSimulator.vue')
+                },
+                {
                     path: '/dashboard',
                     name: 'dashboard',
                     component: () => import('@/views/Dashboard.vue')
