@@ -7,9 +7,10 @@ const model = ref([
     {
         label: 'Simuladores',
         items: [
-            { label: 'Simulador de Investimentos', icon: 'pi pi-fw pi-chart-line', to: '/' },
-            { label: 'Simulador de Aporte Mensal', icon: 'pi pi-fw pi-calculator', to: '/simulador-aporte-mensal' },
-            { label: 'Simulador de Usufruto', icon: 'pi pi-fw pi-replay', to: '/simulador-usufruto' }
+            { label: 'Investimentos', icon: 'pi pi-fw pi-chart-line', to: '/' },
+            { label: 'Aporte Mensal', icon: 'pi pi-fw pi-calculator', to: '/simulador-aporte-mensal' },
+            { label: 'Usufruto de Patrimônio', icon: 'pi pi-fw pi-replay', to: '/simulador-usufruto' },
+            { label: 'Á Vista ou Parcelado', icon: 'pi pi-fw pi-replay', to: '/simulador-compra-parcelada' }
             // { label: 'Visão Geral', icon: 'pi pi-fw pi-chart-bar', to: '/' },
             // { label: 'Carteira', icon: 'pi pi-fw pi-wallet', to: '/carteira' },
             // { label: 'Configurações', icon: 'pi pi-fw pi-chart-pie', to: '/configuracoes' },

@@ -61,7 +61,7 @@ export default {
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-4">
-                <label>Rentabilidade <i class="pi pi-question-circle" v-tooltip="'Taxa de rentabilidade onde o patrimônio está aplicado'"></i></label>
+                <label>Rentabilidade <i class="pi pi-question-circle" v-tooltip.focus.top="'Taxa de rentabilidade onde o patrimônio está aplicado'" tabindex="1"></i></label>
                 <InputGroup>
                     <InputNumber v-model="profitability.value" locale="pt-BR" :maxFractionDigits="2" />
                     <InputGroupAddon>%</InputGroupAddon>
@@ -69,7 +69,7 @@ export default {
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-4">
-                <label>Retirada mensal <i class="pi pi-question-circle" v-tooltip="'Quanto você deseja retirar por mês'"></i></label>
+                <label>Retirada mensal <i class="pi pi-question-circle" v-tooltip.focus.top="'Quanto você deseja retirar por mês'" tabindex="2"></i></label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
                     <InputNumber v-model="monthlyWithdrawal" locale="pt-BR" :maxFractionDigits="2" />

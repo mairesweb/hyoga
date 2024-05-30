@@ -128,14 +128,14 @@ export default {
                         <RadioButton v-model="investimentType" inputId="tributado" name="investimentType" value="tributado" />
                         <label for="tributado" class="ml-2">
                             Tributado
-                            <i class="pi pi-question-circle" v-tooltip="'Investimentos em CDB, RDB, Tesouro Direto e Debêntures'"></i>
+                            <i class="pi pi-question-circle" v-tooltip.focus.top="'Investimentos em CDB, RDB, Tesouro Direto e Debêntures'" tabindex="1"></i>
                         </label>
                     </div>
                     <div class="flex align-items-center">
                         <RadioButton v-model="investimentType" inputId="isento" name="investimentType" value="isento" />
                         <label for="isento" class="ml-2">
                             Isento
-                            <i class="pi pi-question-circle" v-tooltip="'Investimentos em LCI, LCA, LC, CRA e CRI'"></i>
+                            <i class="pi pi-question-circle" v-tooltip.focus.top="'Investimentos em LCI, LCA, LC, CRA e CRI'" tabindex="2"></i>
                         </label>
                     </div>
                 </div>
@@ -147,21 +147,21 @@ export default {
                         <RadioButton v-model="preOuPos" inputId="prefixado" name="preOuPos" value="prefixado" />
                         <label for="prefixado" class="ml-2">
                             Préfixado
-                            <i class="pi pi-question-circle" v-tooltip="'Rendem de acordo a uma taxa fixa pré-estabelecida'"></i>
+                            <i class="pi pi-question-circle" v-tooltip.focus.top="'Rendem de acordo a uma taxa fixa pré-estabelecida'" tabindex="3"></i>
                         </label>
                     </div>
                     <div class="flex align-items-center">
                         <RadioButton v-model="preOuPos" inputId="cdi" name="preOuPos" value="cdi" />
                         <label for="cdi" class="ml-2">
                             CDI
-                            <i class="pi pi-question-circle" v-tooltip="'Rendem de acordo ao CDI (relacionado ao Selic)'"></i>
+                            <i class="pi pi-question-circle" v-tooltip.focus.top="'Rendem de acordo ao CDI (relacionado ao Selic)'" tabindex="4"></i>
                         </label>
                     </div>
                     <div class="flex align-items-center">
                         <RadioButton v-model="preOuPos" inputId="ipca" name="preOuPos" value="ipca" />
                         <label for="ipca" class="ml-2">
                             IPCA
-                            <i class="pi pi-question-circle" v-tooltip="'Rendem de acordo ao IPCA (relacionado a inflação)'"></i>
+                            <i class="pi pi-question-circle" v-tooltip.focus.top="'Rendem de acordo ao IPCA (relacionado a inflação)'" tabindex="5"></i>
                         </label>
                     </div>
                 </div>
@@ -188,7 +188,7 @@ export default {
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-6">
-                <label>Rentabilidade <i class="pi pi-question-circle" v-tooltip="'Para CDI é considerado 0,8% ao mês e para IPCA é considerado 0,45% ao mês.'"></i></label>
+                <label>Rentabilidade <i class="pi pi-question-circle" v-tooltip.focus.top="'Para CDI é considerado 0,8% ao mês e para IPCA é considerado 0,45% ao mês.'" tabindex="6"></i></label>
                 <InputGroup>
                     <InputGroupAddon v-if="preOuPos === 'ipca'">5,54</InputGroupAddon>
                     <InputGroupAddon v-if="preOuPos === 'ipca'">+</InputGroupAddon>
