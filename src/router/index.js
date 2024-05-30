@@ -5,28 +5,13 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
-            path: '/',
+            path: '',
             component: AppLayout,
             children: [
                 {
                     path: '',
                     name: 'basic-investiment-simulator',
                     component: () => import('@/views/simulators/BasicInvestimentSimulator.vue')
-                },
-                {
-                    path: '/simulador-aporte-mensal',
-                    name: 'monthly-investiment-simulator',
-                    component: () => import('@/views/simulators/MonthlyInvestimentSimulator.vue')
-                },
-                {
-                    path: '/simulador-usufruto',
-                    name: 'usufruct-simulator',
-                    component: () => import('@/views/simulators/UsufructSimulator.vue')
-                },
-                {
-                    path: '/simulador-compra-parcelada',
-                    name: 'partial-payment-simulator',
-                    component: () => import('@/views/simulators/PartialPaymentSimulator.vue')
                 },
                 {
                     path: '/dashboard',
@@ -52,6 +37,38 @@ const router = createRouter({
                     path: '/proventos',
                     name: 'earnings',
                     component: () => import('@/views/Earnings.vue')
+                }
+            ]
+        },
+        {
+            path: '/simuladores',
+            component: AppLayout,
+            children: [
+                {
+                    path: 'aporte-mensal',
+                    name: 'monthly-investiment-simulator',
+                    component: () => import('@/views/simulators/MonthlyInvestimentSimulator.vue')
+                },
+                {
+                    path: 'usufruto',
+                    name: 'usufruct-simulator',
+                    component: () => import('@/views/simulators/UsufructSimulator.vue')
+                },
+                {
+                    path: 'compra-parcelada',
+                    name: 'partial-payment-simulator',
+                    component: () => import('@/views/simulators/PartialPaymentSimulator.vue')
+                }
+            ]
+        },
+        {
+            path: '/graficos',
+            component: AppLayout,
+            children: [
+                {
+                    path: 'liberdade-financeira',
+                    name: 'financial-freedom-chart',
+                    component: () => import('@/views/charts/FinancialFreedomChart.vue')
                 }
             ]
         },

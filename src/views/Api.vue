@@ -2,8 +2,29 @@
 import { useRoute } from 'vue-router';
 import { ref, onBeforeMount } from 'vue';
 
+interface asset {
+    ticker: string;
+    setor: string;
+    subsetor: string;
+    dy: number;
+    pl: number;
+    pvp: number;
+    lpa: number;
+    vpa: number;
+    roe: number;
+    roic: number;
+    pebit: number;
+    liquidezCorrente: number;
+    receitaLiquida12Meses: number;
+    margemEbit: number;
+    margemBruta: number;
+    margemLiquida: number;
+    evEbitda: number;
+    valorDeMercado: number;
+}
+
 const route = useRoute();
-const assets = ref([]);
+const assets = ref([] as asset[]);
 
 onBeforeMount(() => {
     try {
@@ -13,7 +34,6 @@ onBeforeMount(() => {
             .then((response) => response.json())
             .then((data) => {
                 assets.value = data;
-                console.log(data);
             });
     } catch (error) {
         console.error(error);
