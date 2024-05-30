@@ -62,6 +62,17 @@ const router = createRouter({
             ]
         },
         {
+            path: '/graficos',
+            component: AppLayout,
+            children: [
+                {
+                    path: 'liberdade-financeira',
+                    name: 'financial-freedom-chart',
+                    component: () => import('@/views/charts/FinancialFreedomChart.vue')
+                }
+            ]
+        },
+        {
             path: '/api/:tickers',
             name: 'api',
             component: () => import('@/views/Api.vue')
