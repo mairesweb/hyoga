@@ -109,10 +109,10 @@ export default {
                 costOfLiving = custoDeVida;
                 date.setMonth(date.getMonth() + 1);
                 console.log(result.length, realIncome, costOfLiving);
-            } while (realIncome < costOfLiving && result.length < 600);
+            } while (realIncome < costOfLiving && result.length < 800);
 
             if (realIncome < costOfLiving) {
-                this.$toast.add({ severity: 'warn', summary: 'Atenção', detail: 'O cálculo ultrapassou o limite de 600 meses.', life: 5000 });
+                this.$toast.add({ severity: 'warn', summary: 'Atenção', detail: 'O cálculo ultrapassou o limite de 800 meses.', life: 5000 });
             }
 
             this.result = result;
