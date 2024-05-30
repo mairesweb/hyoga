@@ -108,7 +108,12 @@ export default {
                 equity = acumulado;
                 costOfLiving = custoDeVida;
                 date.setMonth(date.getMonth() + 1);
-            } while (realIncome < costOfLiving);
+                console.log(result.length, realIncome, costOfLiving);
+            } while (realIncome < costOfLiving && result.length < 800);
+
+            if (realIncome < costOfLiving) {
+                this.$toast.add({ severity: 'warn', summary: 'Atenção', detail: 'O cálculo ultrapassou o limite de 800 meses.', life: 5000 });
+            }
 
             this.result = result;
         },
