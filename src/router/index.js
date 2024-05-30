@@ -54,6 +54,11 @@ const router = createRouter({
                     component: () => import('@/views/Earnings.vue')
                 }
             ]
+        },
+        {
+            path: '/api/:tickers',
+            name: 'api',
+            component: () => import('@/views/Api.vue')
         }
     ]
 });
