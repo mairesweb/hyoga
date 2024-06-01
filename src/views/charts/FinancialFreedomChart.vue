@@ -1,6 +1,18 @@
 <script lang="ts">
 export default {
     name: 'FinancialFreedomChart',
+    head() {
+        return {
+            title: 'Alcance a Liberdade Financeira',
+            meta: [
+                {
+                    name: 'description',
+                    content:
+                        'Descubra como alcançar a liberdade financeira com nossa simulação interativa. Planeje suas finanças, defina metas e veja como investir pode transformar seu futuro. Comece sua jornada para a independência financeira hoje!'
+                }
+            ]
+        };
+    },
     data() {
         return {
             equity: null as number | null,
