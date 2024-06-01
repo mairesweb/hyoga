@@ -5,6 +5,7 @@ import AppFooter from './AppFooter.vue';
 import AppSidebar from './AppSidebar.vue';
 import AppConfig from './AppConfig.vue';
 import { useLayout } from '@/layout/composables/layout';
+import { useMainStore } from '@/store/MainStore';
 
 const { layoutConfig, layoutState, isSidebarActive } = useLayout();
 
@@ -17,6 +18,11 @@ watch(isSidebarActive, (newVal) => {
         unbindOutsideClickListener();
     }
 });
+
+function onResize({ width }) {
+    console.log(width);
+    useMainStore().layoutMainWidth = width;
+}
 
 const containerClass = computed(() => {
     return {
@@ -63,7 +69,7 @@ const isOutsideClicked = (event) => {
             <app-sidebar></app-sidebar>
         </div>
         <div class="layout-main-container">
-            <div class="layout-main">
+            <div class="layout-main" v-resize="onResize">
                 <router-view></router-view>
             </div>
             <app-footer></app-footer>
