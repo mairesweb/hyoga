@@ -2,7 +2,18 @@
 import { formatCurrency } from '@/utils/Numbers';
 
 export default {
-    name: 'BasicInvestimentSimulator',
+    name: 'InvestimentSimulator',
+    head() {
+        return {
+            title: 'Simulador de Investimentos',
+            meta: [
+                {
+                    name: 'description',
+                    content: 'Simule o rendimento de um investimento com base no tipo de investimento, valor inicial, valor mensal, prazo e rentabilidade.'
+                }
+            ]
+        };
+    },
     data() {
         return {
             investimentType: 'tributado',
