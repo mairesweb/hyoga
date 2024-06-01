@@ -32,6 +32,9 @@ const model = ref([
             <li v-if="item.separator" class="menu-separator"></li>
         </template>
     </ul>
+    <div class="p-fluid flex justify-content-center mt-6 w-full">
+        <Adsense data-ad-client="ca-pub-2781432625181032" data-ad-slot="4017101513" data-ad-format="auto" data-full-width-responsive="true" style="display: block"></Adsense>
+    </div>
 </template>
 
 <style lang="scss" scoped></style>
