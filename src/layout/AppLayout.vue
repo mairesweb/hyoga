@@ -20,7 +20,6 @@ watch(isSidebarActive, (newVal) => {
 });
 
 function onResize({ width }) {
-    console.log(width);
     useMainStore().layoutMainWidth = width;
 }
 
