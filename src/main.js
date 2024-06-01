@@ -112,6 +112,7 @@ import BlockViewer from '@/components/BlockViewer.vue';
 import '@/assets/styles.scss';
 import ScriptX from 'vue-scriptx';
 import Ads from 'vue-google-adsense';
+import { VueHeadMixin, createHead } from '@unhead/vue';
 
 const app = createApp(App);
 
@@ -125,6 +126,10 @@ app.use(ScriptX);
 app.use(Ads.Adsense);
 app.use(Ads.InArticleAdsense);
 app.use(Ads.InFeedAdsense);
+
+const head = createHead();
+app.mixin(VueHeadMixin);
+app.use(head);
 
 app.directive('tooltip', Tooltip);
 app.directive('badge', BadgeDirective);

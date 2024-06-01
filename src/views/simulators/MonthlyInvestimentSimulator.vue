@@ -3,6 +3,17 @@ import { formatCurrency } from '@/utils/Numbers';
 
 export default {
     name: 'MonthlyInvestimentSimulator',
+    head() {
+        return {
+            title: 'Simulador de Aporte Mensal',
+            meta: [
+                {
+                    name: 'description',
+                    content: 'Simulador de aporte mensal para atingir um patrimônio alvo. Calcule quanto você deve investir mensalmente para atingir um objetivo financeiro.'
+                }
+            ]
+        };
+    },
     data() {
         return {
             goalEquity: null as number | null,

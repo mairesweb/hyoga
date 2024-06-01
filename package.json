@@ -8,6 +8,7 @@
         "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
     },
     "dependencies": {
+        "@unhead/vue": "^1.9.11",
         "chart.js": "3.3.2",
         "dexie": "^4.0.4",
         "pinia": "^2.1.7",

@@ -1,6 +1,17 @@
 <script lang="ts">
 export default {
     name: 'UsufructSimulator',
+    head() {
+        return {
+            title: 'Simulador de Usufruto ou Fruição',
+            meta: [
+                {
+                    name: 'description',
+                    content: 'Calcule quanto tempo você conseguirá usufruir de uma renda pré-determinada, com base em um patrimônio acumulado. Simulador usado para planejamento financeiro e aposentadoria.'
+                }
+            ]
+        };
+    },
     data() {
         return {
             equity: null as number | null,

@@ -3,6 +3,17 @@ import { formatCurrency } from '@/utils/Numbers';
 
 export default {
     name: 'PartialPaymentSimulator',
+    head() {
+        return {
+            title: 'Pagamento à Vista ou Parcelado? Qual vale a pena?',
+            meta: [
+                {
+                    name: 'description',
+                    content: 'Simulador de pagamento à vista ou parcelado. Compare o valor final de uma compra à vista ou parcelada e veja qual opção é mais vantajosa.'
+                }
+            ]
+        };
+    },
     data() {
         return {
             cost: null as number | null,
