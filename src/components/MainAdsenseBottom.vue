@@ -11,7 +11,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="p-fluid flex justify-content-center mt-3 mb-6 main-ad-block" :style="{ width: (fixedwidth || 1024) + 'px' }">
+    <div class="p-fluid flex justify-content-center mt-3 mb-6 main-ad-block" :style="{ width: fixedwidth + 'px' }">
         <Adsense data-ad-client="ca-pub-2781432625181032" data-ad-slot="5627803764" data-ad-format="auto" data-full-width-responsive="true"></Adsense>
     </div>
 </template>
@@ -19,5 +19,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 .main-ad-block {
     margin: 0 auto;
+    width: 1024px;
 }
 </style>
