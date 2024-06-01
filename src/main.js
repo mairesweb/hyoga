@@ -112,7 +112,7 @@ import BlockViewer from '@/components/BlockViewer.vue';
 import '@/assets/styles.scss';
 import ScriptX from 'vue-scriptx';
 import Ads from 'vue-google-adsense';
-// import { VueHeadMixin, createHead } from '@unhead/vue';
+import { VueHeadMixin, createHead } from '@unhead/vue';
 import VueResizeObserver from 'vue-resize-observer';
 
 const app = createApp(App);
@@ -129,9 +129,9 @@ app.use(Ads.InArticleAdsense);
 app.use(Ads.InFeedAdsense);
 app.use(VueResizeObserver);
 
-// const head = createHead();
-// app.mixin(VueHeadMixin);
-// app.use(head);
+const head = createHead();
+app.mixin(VueHeadMixin);
+app.use(head);
 
 app.directive('tooltip', Tooltip);
 app.directive('badge', BadgeDirective);
