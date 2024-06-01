@@ -39,6 +39,6 @@ const model = ref([
 
 <style lang="scss" scoped>
 .menu-ad-block {
-    width: 300px;
+    width: 258px;
 }
 </style>

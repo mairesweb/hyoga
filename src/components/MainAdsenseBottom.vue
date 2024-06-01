@@ -19,5 +19,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 .main-ad-block {
     margin: 0 auto;
+    width: 1024px;
 }
 </style>
