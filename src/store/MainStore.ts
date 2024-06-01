@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 
 export const useMainStore = defineStore('mainStore', {
     state: () => ({
-        walletGoal: appDatabase.walletGoalTable.toArray()
+        walletGoal: appDatabase.walletGoalTable.toArray(),
+        layoutMainWidth: 1024
     })
 });

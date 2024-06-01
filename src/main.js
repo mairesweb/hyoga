@@ -113,6 +113,7 @@ import '@/assets/styles.scss';
 import ScriptX from 'vue-scriptx';
 import Ads from 'vue-google-adsense';
 import { VueHeadMixin, createHead } from '@unhead/vue';
+import VueResizeObserver from 'vue-resize-observer';
 
 const app = createApp(App);
 
@@ -126,6 +127,7 @@ app.use(ScriptX);
 app.use(Ads.Adsense);
 app.use(Ads.InArticleAdsense);
 app.use(Ads.InFeedAdsense);
+app.use(VueResizeObserver);
 
 const head = createHead();
 app.mixin(VueHeadMixin);
