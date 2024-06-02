@@ -54,13 +54,13 @@ const isOutsideClicked = (event) => {
         <router-link to="/" class="layout-topbar-logo">
             <img :src="logoUrl" alt="logo" />
         </router-link>
-        <button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()">
+        <!--button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()">
             <i class="pi pi-bars"></i>
         </button>
-
         <button class="p-link layout-topbar-menu-button layout-topbar-button" @click="onTopBarMenuButton()">
             <i class="pi pi-ellipsis-v"></i>
-        </button>
+        </button-->
+        <Adsense data-ad-client="ca-pub-2781432625181032" data-ad-slot="4887529749" style="width: 728px" ins-style="display:inline-block;width:728px;height:50px"> </Adsense>
     </div>
 </template>
 
