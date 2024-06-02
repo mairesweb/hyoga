@@ -111,8 +111,9 @@ import BlockViewer from '@/components/BlockViewer.vue';
 
 import '@/assets/styles.scss';
 import { VueHeadMixin, createHead } from '@unhead/vue';
-import VueResizeObserver from 'vue-resize-observer';
-import VueAdsense from 'vue-adsense';
+
+import ScriptX from 'vue-scriptx';
+import Ads from 'vue-google-adsense';
 
 const app = createApp(App);
 
@@ -122,11 +123,13 @@ app.use(PrimeVue, { ripple: true });
 app.use(ToastService);
 app.use(DialogService);
 app.use(ConfirmationService);
-app.use(VueResizeObserver);
 
 const head = createHead();
 app.mixin(VueHeadMixin);
 app.use(head);
+
+app.use(ScriptX);
+app.use(Ads.Adsense);
 
 app.directive('tooltip', Tooltip);
 app.directive('badge', BadgeDirective);
@@ -230,7 +233,5 @@ app.component('TreeSelect', TreeSelect);
 app.component('TreeTable', TreeTable);
 app.component('TriStateCheckbox', TriStateCheckbox);
 app.component('VirtualScroller', VirtualScroller);
-
-app.component('adsense', VueAdsense);
 
 app.mount('#app');

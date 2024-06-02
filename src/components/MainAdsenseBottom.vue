@@ -11,19 +11,9 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="p-fluid flex justify-content-center mt-3 mb-6 main-ad-block" :style="{ width: fixedwidth + 'px' }">
-        <!-- <ins class="adsbygoogle" style="display: block" data-ad-client="ca-pub-2781432625181032" data-ad-slot="5627803764" data-ad-format="auto" data-full-width-responsive="true"></ins> -->
-        <adsense ad-client="ca-pub-2781432625181032" ad-slot="5627803764" ad-style="display: block" ad-format="auto" full-width-responsive="true"> </adsense>
+    <div class="p-fluid flex justify-content-center mt-3 mb-6 main-ad-block w-full">
+        <Adsense data-ad-client="ca-pub-2781432625181032" data-ad-slot="5627803764" style="display: block; width: 100%" data-full-width-responsive="yes"> </Adsense>
     </div>
 </template>
 
-<style lang="scss" scoped>
-.main-ad-block {
-    margin: 0 auto;
-}
-
-ins {
-    min-width: 960px;
-    min-height: 50px;
-}
-</style>
+<style lang="scss" scoped></style>
