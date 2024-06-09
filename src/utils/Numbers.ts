@@ -5,3 +5,7 @@ export function formatPercentage(number: number) {
 export function formatCurrency(number: number) {
     return number.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
 }
+
+export function formatNumber(number: number) {
+    return number.toLocaleString('pt-br');
+}
