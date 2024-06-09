@@ -1,10 +1,11 @@
 <script lang="ts">
+import MInputNumber from '@/components/MInputNumber.vue';
 import MainAdsenseBottom from '@/components/MainAdsenseBottom.vue';
 import { formatCurrency } from '@/utils/Numbers';
 
 export default {
     name: 'PartialPaymentSimulator',
-    components: { MainAdsenseBottom },
+    components: { MainAdsenseBottom, MInputNumber },
     head() {
         return {
             title: 'Pagamento à Vista ou Parcelado? Qual vale a pena?',
@@ -18,13 +19,13 @@ export default {
     },
     data() {
         return {
-            cost: null as number | null,
+            cost: 0,
             optionsProfitability: [
                 { name: 'a.m.', code: 'a.m.' },
                 { name: 'a.a.', code: 'a.a.' }
             ],
             profitability: {
-                value: null as number | null,
+                value: 0,
                 option: { name: 'a.m.', code: 'a.m.' }
             },
             optionsInCash: [
@@ -32,13 +33,13 @@ export default {
                 { name: 'Dessconto (%)', code: 'percent' }
             ],
             inCash: {
-                value: null as number | null,
+                value: 0,
                 option: { name: 'Valor final', code: 'valor' },
-                discount: null as number | null
+                discount: 0
             },
             resultSimulation: {
-                inCash: null as number | null,
-                inTerm: null as number | null
+                inCash: 0,
+                inTerm: 0
             },
             inTerm: {
                 qtyParts: 1,
@@ -49,21 +50,21 @@ export default {
     },
     methods: {
         clearFields() {
-            this.cost = null;
-            this.profitability.value = null;
+            this.cost = 0;
+            this.profitability.value = 0;
             this.inTerm = {
                 qtyParts: 1,
                 taxe: 0,
                 option: { name: 'a.m.', code: 'a.m.' }
             };
             this.inCash = {
-                value: null,
+                value: 0,
                 option: { name: 'Valor final', code: 'valor' },
-                discount: null
+                discount: 0
             };
             this.resultSimulation = {
-                inCash: null,
-                inTerm: null
+                inCash: 0,
+                inTerm: 0
             };
         },
         calculate() {
@@ -145,7 +146,7 @@ export default {
                 <label>Valor da compra</label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="cost" locale="pt-BR" :maxFractionDigits="2" />
+                    <MInputNumber v-model="cost" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-4">
@@ -153,23 +154,23 @@ export default {
                 <InputGroup>
                     <Dropdown v-model="inCash.option" :options="optionsInCash" optionLabel="name" class="w-12rem" />
                     <InputGroupAddon v-if="inCash.option.code === 'valor'">R$</InputGroupAddon>
-                    <InputNumber v-if="inCash.option.code === 'valor'" v-model="inCash.value" locale="pt-BR" :maxFractionDigits="2" />
-                    <InputNumber v-else v-model="inCash.discount" locale="pt-BR" :maxFractionDigits="2" />
+                    <MInputNumber v-if="inCash.option.code === 'valor'" v-model="inCash.value" />
+                    <MInputNumber v-else v-model="inCash.discount" />
                     <InputGroupAddon v-if="inCash.option.code === 'percent'">%</InputGroupAddon>
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-4">
                 <label>Pagamento à prazo <i class="pi pi-question-circle" v-tooltip.focus.top="'Número de parcelas e taxa de juros aplicado na compra parcelada.'" tabindex="2"></i></label>
                 <InputGroup>
-                    <InputNumber v-model="inTerm.qtyParts" locale="pt-BR" suffix="x" placeholder="Nº de parcelas" :maxFractionDigits="2" />
-                    <InputNumber v-model="inTerm.taxe" suffix="%" locale="pt-BR" placeholder="Taxa de juros" :maxFractionDigits="2" />
+                    <InputNumber v-model="inTerm.qtyParts" suffix="x" placeholder="Nº de parcelas" />
+                    <MInputNumber v-model="inTerm.taxe" suffix="%" placeholder="Taxa de juros" />
                     <Dropdown v-model="inTerm.option" :options="optionsProfitability" optionLabel="name" class="w-7rem" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-4">
                 <label>Rentabilidade <i class="pi pi-question-circle" v-tooltip.focus.top="'Taxa de rentabilidade onde o dinheiro será aplicado'" tabindex="3"></i></label>
                 <InputGroup>
-                    <InputNumber v-model="profitability.value" locale="pt-BR" :maxFractionDigits="2" />
+                    <MInputNumber v-model="profitability.value" />
                     <InputGroupAddon>%</InputGroupAddon>
                     <Dropdown v-model="profitability.option" :options="optionsProfitability" optionLabel="name" class="w-7rem" />
                 </InputGroup>

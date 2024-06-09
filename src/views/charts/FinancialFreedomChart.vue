@@ -1,9 +1,10 @@
 <script lang="ts">
+import MInputNumber from '@/components/MInputNumber.vue';
 import MainAdsenseBottom from '@/components/MainAdsenseBottom.vue';
 
 export default {
     name: 'FinancialFreedomChart',
-    components: { MainAdsenseBottom },
+    components: { MainAdsenseBottom, MInputNumber },
     head() {
         return {
             title: 'Alcance a Liberdade Financeira',
@@ -18,9 +19,9 @@ export default {
     },
     data() {
         return {
-            equity: null as number | null,
-            costOfLiving: null as number | null,
-            investimentMonthly: null as number | null,
+            equity: 0,
+            costOfLiving: 0,
+            investimentMonthly: 0,
             inflation: 0.35,
             optionsProfitability: [
                 { name: 'a.m.', code: 'a.m.' },
@@ -94,9 +95,9 @@ export default {
     },
     methods: {
         clearFields() {
-            this.equity = null;
-            this.costOfLiving = null;
-            this.investimentMonthly = null;
+            this.equity = 0;
+            this.costOfLiving = 0;
+            this.investimentMonthly = 0;
             this.profitability.value = 0.8;
             this.inflation = 0.35;
             this.result = [];
@@ -123,7 +124,6 @@ export default {
                 equity = acumulado;
                 costOfLiving = custoDeVida;
                 date.setMonth(date.getMonth() + 1);
-                console.log(result.length, realIncome, costOfLiving);
             } while (realIncome < costOfLiving && result.length < 800);
 
             if (realIncome < costOfLiving) {
@@ -148,27 +148,27 @@ export default {
                 <label>Patrimônio atual <i class="pi pi-question-circle" v-tooltip.focus.top="'Quanto tem investido atualmente.'" tabindex="1"></i></label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="equity" locale="pt-BR" :maxFractionDigits="2" />
+                    <MInputNumber v-model="equity" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-4">
                 <label>Custo de vida atual <i class="pi pi-question-circle" v-tooltip.focus.top="'Valor que você precisa para pagar suas contas.'" tabindex="2"></i></label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="costOfLiving" locale="pt-BR" :maxFractionDigits="2" />
+                    <MInputNumber v-model="costOfLiving" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-4">
                 <label>Investimento mensal <i class="pi pi-question-circle" v-tooltip.focus.top="'Quanto você investe todos os meses, pode ser uma média.'" tabindex="3"></i></label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="investimentMonthly" locale="pt-BR" :maxFractionDigits="2" />
+                    <MInputNumber v-model="investimentMonthly" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-4">
                 <label>Rentabilidade <i class="pi pi-question-circle" v-tooltip.focus.top="'Taxa de rentabilidade onde o patrimônio está aplicado'" tabindex="1"></i></label>
                 <InputGroup>
-                    <InputNumber v-model="profitability.value" locale="pt-BR" :maxFractionDigits="2" />
+                    <MInputNumber v-model="profitability.value" />
                     <InputGroupAddon>%</InputGroupAddon>
                     <Dropdown v-model="profitability.option" :options="optionsProfitability" optionLabel="name" class="w-7rem" />
                 </InputGroup>
@@ -176,7 +176,7 @@ export default {
             <div className="field col-12 md:col-4">
                 <label>Inflação mensal <i class="pi pi-question-circle" v-tooltip.focus.top="'Taxa inflacionária que deseja usar para o cálculo.'" tabindex="2"></i></label>
                 <InputGroup>
-                    <InputNumber v-model="inflation" locale="pt-BR" :maxFractionDigits="2" />
+                    <MInputNumber v-model="inflation" />
                     <InputGroupAddon>%</InputGroupAddon>
                 </InputGroup>
             </div>

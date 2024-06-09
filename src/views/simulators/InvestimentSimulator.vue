@@ -1,10 +1,11 @@
 <script lang="ts">
+import MInputNumber from '@/components/MInputNumber.vue';
 import MainAdsenseBottom from '@/components/MainAdsenseBottom.vue';
 import { formatCurrency } from '@/utils/Numbers';
 
 export default {
     name: 'InvestimentSimulator',
-    components: { MainAdsenseBottom },
+    components: { MainAdsenseBottom, MInputNumber },
     head() {
         return {
             title: 'Simulador de Investimentos',
@@ -20,8 +21,8 @@ export default {
         return {
             investimentType: 'tributado',
             preOuPos: 'prefixado',
-            investimentInitial: null as number | null,
-            investimentMonthly: null as number | null,
+            investimentInitial: 0,
+            investimentMonthly: 0,
             investimentTime: {
                 value: 1,
                 option: 'Meses'
@@ -32,7 +33,7 @@ export default {
                 { name: 'a.a.', code: 'a.a.' }
             ],
             profitability: {
-                value: null as number | null,
+                value: 0,
                 option: { name: 'a.m.', code: 'a.m.' }
             },
             resultSimulation: {
@@ -47,11 +48,11 @@ export default {
     },
     methods: {
         clearFields() {
-            this.investimentInitial = null;
-            this.investimentMonthly = null;
+            this.investimentInitial = 0;
+            this.investimentMonthly = 0;
             this.investimentTime.value = 1;
             this.profitability = {
-                value: null,
+                value: 0,
                 option: { name: 'a.m.', code: 'a.m.' }
             };
         },
@@ -64,12 +65,12 @@ export default {
         },
         getTaxe() {
             if (this.preOuPos === 'prefixado') {
-                const profitabilityMonthly = this.profitability.option.name === 'a.m.' ? (this.profitability.value as number) / 100 : this.convertTaxeToMonthly(this.profitability.value as number);
+                const profitabilityMonthly = this.profitability.option.name === 'a.m.' ? this.profitability.value / 100 : this.convertTaxeToMonthly(this.profitability.value);
                 return profitabilityMonthly;
             } else if (this.preOuPos === 'cdi') {
-                return ((this.profitability.value as number) / 100) * 0.008;
+                return (this.profitability.value / 100) * 0.008;
             } else {
-                return this.convertTaxeToMonthly(this.profitability.value as number) + 0.0045;
+                return this.convertTaxeToMonthly(this.profitability.value) + 0.0045;
             }
         },
         getTime() {
@@ -78,8 +79,8 @@ export default {
         calculateFutureValue(): number {
             const taxe = this.getTaxe();
             const time = this.getTime();
-            const p = this.investimentInitial as number;
-            const pmt = this.investimentMonthly as number;
+            const p = this.investimentInitial;
+            const pmt = this.investimentMonthly;
             const i = taxe;
             const n = time;
 
@@ -87,8 +88,8 @@ export default {
         },
         calculateAmountInvested(): number {
             const time = this.getTime();
-            const p = this.investimentInitial as number;
-            const pmt = this.investimentMonthly as number;
+            const p = this.investimentInitial;
+            const pmt = this.investimentMonthly;
             const n = time;
 
             return Number((p + pmt * n).toFixed(2));
@@ -183,14 +184,14 @@ export default {
                 <label>Investimento inicial</label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="investimentInitial" locale="pt-BR" :maxFractionDigits="2" />
+                    <MInputNumber v-model="investimentInitial" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-6">
                 <label>Investimento mensal</label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="investimentMonthly" locale="pt-BR" :maxFractionDigits="2" />
+                    <MInputNumber v-model="investimentMonthly" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-6">
@@ -205,7 +206,7 @@ export default {
                 <InputGroup>
                     <InputGroupAddon v-if="preOuPos === 'ipca'">5,54</InputGroupAddon>
                     <InputGroupAddon v-if="preOuPos === 'ipca'">+</InputGroupAddon>
-                    <InputNumber v-model="profitability.value" locale="pt-BR" :maxFractionDigits="2" />
+                    <MInputNumber v-model="profitability.value" />
                     <InputGroupAddon>%</InputGroupAddon>
                     <InputGroupAddon v-if="preOuPos === 'cdi'">CDI</InputGroupAddon>
                     <Dropdown v-if="preOuPos === 'prefixado'" v-model="profitability.option" :options="optionsProfitability" optionLabel="name" class="w-7rem" />

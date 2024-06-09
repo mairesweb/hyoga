@@ -4,7 +4,7 @@ import { VMoney } from 'v-money';
 import { convertCurrencyToNumber } from '@/utils/Numbers';
 
 export default defineComponent({
-    name: 'MInputMoney',
+    name: 'MInputNumber',
     props: {
         modelValue: {
             type: Number
@@ -24,13 +24,19 @@ export default defineComponent({
             price: '',
             money: {
                 decimal: ',',
-                thousands: '.',
-                precision: 2,
-                masked: false
+                thousands: '.'
             }
         };
     },
     directives: { money: VMoney },
+    watch: {
+        modelValue: {
+            immediate: true,
+            handler(value) {
+                this.price = value ? value.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) : '';
+            }
+        }
+    },
     methods: {
         updateValue() {
             this.$emit('update:modelValue', convertCurrencyToNumber(this.price));

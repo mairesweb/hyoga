@@ -1,10 +1,11 @@
 <script lang="ts">
+import MInputNumber from '@/components/MInputNumber.vue';
 import MainAdsenseBottom from '@/components/MainAdsenseBottom.vue';
 import { formatCurrency } from '@/utils/Numbers';
 
 export default {
     name: 'MonthlyInvestimentSimulator',
-    components: { MainAdsenseBottom },
+    components: { MainAdsenseBottom, MInputNumber },
     head() {
         return {
             title: 'Simulador de Aporte Mensal',
@@ -18,18 +19,18 @@ export default {
     },
     data() {
         return {
-            goalEquity: null as number | null,
+            goalEquity: 0,
             investimentTime: { value: 1, option: 'Meses' },
             optionsProfitability: [
                 { name: 'a.m.', code: 'a.m.' },
                 { name: 'a.a.', code: 'a.a.' }
             ],
             profitability: {
-                value: null as number | null,
+                value: 0,
                 option: { name: 'a.m.', code: 'a.m.' }
             },
             optionsTime: ['Meses', 'Anos'],
-            resultSimulation: null as number | null
+            resultSimulation: 0
         };
     },
     methods: {
@@ -43,10 +44,10 @@ export default {
             this.investimentTime.value = 0;
             this.investimentTime.option = 'Meses';
             this.profitability = {
-                value: null,
+                value: 0,
                 option: { name: 'a.m.', code: 'a.m.' }
             };
-            this.resultSimulation = null;
+            this.resultSimulation = 0;
         },
         convertTaxeToMonthly(taxe: number) {
             return Math.pow(1 + taxe / 100, 1 / 12) - 1;
@@ -67,20 +68,20 @@ export default {
                 <label>Patrimônio "alvo"</label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="goalEquity" locale="pt-BR" :maxFractionDigits="2" />
+                    <MInputNumber v-model="goalEquity" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-4">
                 <label>Prazo</label>
                 <InputGroup>
-                    <InputNumber v-model="investimentTime.value" locale="pt-BR" />
+                    <InputNumber v-model="investimentTime.value" />
                     <SelectButton v-model="investimentTime.option" :options="optionsTime" aria-labelledby="basic" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-4">
                 <label>Rentabilidade <i class="pi pi-question-circle" v-tooltip.focus.top="'Taxa de rentabilidade onde o dinheiro será aplicado.'" tabindex="2"></i></label>
                 <InputGroup>
-                    <InputNumber v-model="profitability.value" locale="pt-BR" :maxFractionDigits="2" />
+                    <MInputNumber v-model="profitability.value" />
                     <InputGroupAddon>%</InputGroupAddon>
                     <Dropdown v-model="profitability.option" :options="optionsProfitability" optionLabel="name" class="w-7rem" />
                 </InputGroup>

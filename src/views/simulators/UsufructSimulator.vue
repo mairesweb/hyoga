@@ -1,9 +1,10 @@
 <script lang="ts">
+import MInputNumber from '@/components/MInputNumber.vue';
 import MainAdsenseBottom from '@/components/MainAdsenseBottom.vue';
 
 export default {
     name: 'UsufructSimulator',
-    components: { MainAdsenseBottom },
+    components: { MainAdsenseBottom, MInputNumber },
     head() {
         return {
             title: 'Simulador de Usufruto ou Fruição',
@@ -17,16 +18,16 @@ export default {
     },
     data() {
         return {
-            equity: null as number | null,
+            equity: 0,
             optionsProfitability: [
                 { name: 'a.m.', code: 'a.m.' },
                 { name: 'a.a.', code: 'a.a.' }
             ],
             profitability: {
-                value: null as number | null,
+                value: 0,
                 option: { name: 'a.m.', code: 'a.m.' }
             },
-            monthlyWithdrawal: null as number | null,
+            monthlyWithdrawal: 0,
             resultSimulation: null as any
         };
     },
@@ -34,18 +35,17 @@ export default {
         calculate() {
             const profitability = this.profitability.option.name === 'a.m.' ? (this.profitability.value as number) / 100 : this.convertTaxeToMonthly(this.profitability.value as number);
             const result = Math.floor(Math.log((this.monthlyWithdrawal as number) / ((this.monthlyWithdrawal as number) - (this.equity as number) * profitability)) / Math.log(1 + profitability));
-            console.log(result);
 
-            this.resultSimulation = isNaN(result) || result === Infinity ? 'Pelo resto da vida' : this.formatYearsAndMonths(result);
+            this.resultSimulation = isNaN(result) || result === Infinity || result > 1200 ? 'Pelo resto da vida' : this.formatYearsAndMonths(result);
         },
         clearFields() {
-            this.equity = null;
+            this.equity = 0;
             this.profitability = {
-                value: null,
+                value: 0,
                 option: { name: 'a.m.', code: 'a.m.' }
             };
-            this.monthlyWithdrawal = null;
-            this.resultSimulation = null;
+            this.monthlyWithdrawal = 0;
+            this.resultSimulation = 0;
         },
         // função que transforma meses em anos e meses
         formatYearsAndMonths(months: number) {
@@ -71,13 +71,13 @@ export default {
                 <label>Patrimônio</label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="equity" locale="pt-BR" :maxFractionDigits="2" />
+                    <MInputNumber v-model="equity" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-4">
                 <label>Rentabilidade <i class="pi pi-question-circle" v-tooltip.focus.top="'Taxa de rentabilidade onde o patrimônio está aplicado'" tabindex="1"></i></label>
                 <InputGroup>
-                    <InputNumber v-model="profitability.value" locale="pt-BR" :maxFractionDigits="2" />
+                    <MInputNumber v-model="profitability.value" />
                     <InputGroupAddon>%</InputGroupAddon>
                     <Dropdown v-model="profitability.option" :options="optionsProfitability" optionLabel="name" class="w-7rem" />
                 </InputGroup>
@@ -86,7 +86,7 @@ export default {
                 <label>Retirada mensal <i class="pi pi-question-circle" v-tooltip.focus.top="'Quanto você deseja retirar por mês'" tabindex="2"></i></label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="monthlyWithdrawal" locale="pt-BR" :maxFractionDigits="2" />
+                    <MInputNumber v-model="monthlyWithdrawal" />
                 </InputGroup>
             </div>
             <div className="field col-12 mt-3">

@@ -1,10 +1,10 @@
 <script lang="ts">
 import { formatNumber, formatCurrency } from '@/utils/Numbers';
-import MInputMoney from '@/components/MInputMoney.vue';
+import MInputNumber from '@/components/MInputNumber.vue';
 
 export default {
     name: 'FinanceOrToHireSimulator',
-    components: { MInputMoney },
+    components: { MInputNumber },
     head() {
         return {
             title: 'Financiar ou Alugar? Qual é melhor?',
@@ -146,20 +146,20 @@ export default {
                 <label htmlFor="propertyValue">Valor do imóvel</label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <MInputMoney v-model="propertyValue" />
+                    <MInputNumber v-model="propertyValue" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-6">
                 <label htmlFor="entry"> Entrada <i class="pi pi-question-circle" v-tooltip.focus.top="'Normalmente, 20% do valor do imóvel deve ser o valor mínimo de entrada'" tabindex="1"></i></label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <MInputMoney v-model="entry" />
+                    <MInputNumber v-model="entry" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-6">
                 <label htmlFor="rate">Taxa de juros (CET)</label>
                 <InputGroup>
-                    <MInputMoney v-model="rate.value" />
+                    <MInputNumber v-model="rate.value" />
                     <InputGroupAddon>%</InputGroupAddon>
                     <Dropdown v-model="rate.option" :options="optionsRate" class="w-7rem" />
                 </InputGroup>
@@ -208,13 +208,13 @@ export default {
                 <label htmlFor="rentalValue">Valor do aluguel</label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <MInputMoney v-model="rentalValue" />
+                    <MInputNumber v-model="rentalValue" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-6">
                 <label htmlFor="rentAdjustment">Reajuste do imóvel <i class="pi pi-question-circle" v-tooltip.focus.top="'Valorização do imóvel'" tabindex="1"></i></label>
                 <InputGroup>
-                    <MInputMoney v-model="rentAdjustment.value" />
+                    <MInputNumber v-model="rentAdjustment.value" />
                     <InputGroupAddon>%</InputGroupAddon>
                     <Dropdown v-model="rentAdjustment.option" :options="optionsRate" class="w-7rem" />
                 </InputGroup>
@@ -223,13 +223,13 @@ export default {
                 <label htmlFor="investimentValue">Valor do aporte mensal <i class="pi pi-question-circle" v-tooltip.focus.top="'Valor que será investido já descontado o valor do aluguel'" tabindex="1"></i></label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <MInputMoney v-model="investimentValue" />
+                    <MInputNumber v-model="investimentValue" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-6">
                 <label htmlFor="profitability">Rentabilidade líquida do investimento</label>
                 <InputGroup>
-                    <MInputMoney v-model="profitability.value" />
+                    <MInputNumber v-model="profitability.value" />
                     <InputGroupAddon>%</InputGroupAddon>
                     <Dropdown v-model="profitability.option" :options="optionsRate" class="w-7rem" />
                 </InputGroup>
