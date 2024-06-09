@@ -3,6 +3,17 @@ import { formatNumber, formatCurrency } from '@/utils/Numbers';
 
 export default {
     name: 'FinanceOrToHireSimulator',
+    head() {
+        return {
+            title: 'Financiar ou Alugar? Qual é melhor?',
+            meta: [
+                {
+                    name: 'description',
+                    content: 'Simulador para comparar financiamento imobiliário com aluguel e investimentos. Saiba qual será a média das parcelas, o valor total do financiamento, o valor total de juros pagos e muito mais.'
+                }
+            ]
+        };
+    },
     data() {
         return {
             propertyValue: null as number | null,
