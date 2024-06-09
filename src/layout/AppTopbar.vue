@@ -51,17 +51,25 @@ const isOutsideClicked = (event) => {
 
 <template>
     <div class="layout-topbar">
-        <router-link to="/" class="layout-topbar-logo">
-            <img :src="logoUrl" alt="logo" />
-        </router-link>
-        <!--button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()">
-            <i class="pi pi-bars"></i>
-        </button>
-        <button class="p-link layout-topbar-menu-button layout-topbar-button" @click="onTopBarMenuButton()">
+        <div class="layout-topbar-left">
+            <router-link to="/" class="layout-topbar-logo">
+                <img :src="logoUrl" alt="logo" />
+            </router-link>
+            <button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()">
+                <i class="pi pi-bars"></i>
+            </button>
+        </div>
+        <!--button class="p-link layout-topbar-menu-button layout-topbar-button" @click="onTopBarMenuButton()">
             <i class="pi pi-ellipsis-v"></i>
         </button-->
-        <Adsense data-ad-client="ca-pub-2781432625181032" data-ad-slot="4887529749" style="width: 728px" ins-style="display:inline-block;width:728px;height:50px"> </Adsense>
+        <Adsense class="adsToolbar" data-ad-client="ca-pub-2781432625181032" data-ad-slot="4887529749" style="width: 728px" ins-style="display:inline-block;width:728px;height:50px"> </Adsense>
     </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@media (max-width: 1024px) {
+    .adsToolbar {
+        display: none;
+    }
+}
+</style>
