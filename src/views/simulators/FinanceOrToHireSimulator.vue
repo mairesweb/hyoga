@@ -147,20 +147,20 @@ export default {
                 <label htmlFor="propertyValue">Valor do imóvel</label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="propertyValue" locale="pt-BR" :maxFractionDigits="2" />
+                    <InputNumber v-model="propertyValue" mode="decimal" locale="pt-BR" :maxFractionDigits="2" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-6">
                 <label htmlFor="entry"> Entrada <i class="pi pi-question-circle" v-tooltip.focus.top="'Normalmente, 20% do valor do imóvel deve ser o valor mínimo de entrada'" tabindex="1"></i></label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="entry" locale="pt-BR" :placeholder="twentyPercent ? formatNumber(twentyPercent) : ''" :maxFractionDigits="2" />
+                    <InputNumber v-model="entry" locale="pt-BR" mode="decimal" :placeholder="twentyPercent ? formatNumber(twentyPercent) : ''" :maxFractionDigits="2" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-6">
                 <label htmlFor="rate">Taxa de juros (CET)</label>
                 <InputGroup>
-                    <InputNumber v-model="rate.value" locale="pt-BR" :maxFractionDigits="2" />
+                    <InputNumber v-model="rate.value" mode="decimal" locale="pt-BR" :maxFractionDigits="2" />
                     <InputGroupAddon>%</InputGroupAddon>
                     <Dropdown v-model="rate.option" :options="optionsRate" class="w-7rem" />
                 </InputGroup>
@@ -209,13 +209,13 @@ export default {
                 <label htmlFor="rentalValue">Valor do aluguel</label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="rentalValue" locale="pt-BR" :maxFractionDigits="2" />
+                    <InputNumber v-model="rentalValue" mode="decimal" locale="pt-BR" :maxFractionDigits="2" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-6">
                 <label htmlFor="rentAdjustment">Reajuste do imóvel <i class="pi pi-question-circle" v-tooltip.focus.top="'Valorização do imóvel'" tabindex="1"></i></label>
                 <InputGroup>
-                    <InputNumber v-model="rentAdjustment.value" locale="pt-BR" :maxFractionDigits="2" />
+                    <InputNumber v-model="rentAdjustment.value" mode="decimal" locale="pt-BR" :maxFractionDigits="2" />
                     <InputGroupAddon>%</InputGroupAddon>
                     <Dropdown v-model="rentAdjustment.option" :options="optionsRate" class="w-7rem" />
                 </InputGroup>
@@ -224,13 +224,13 @@ export default {
                 <label htmlFor="investimentValue">Valor do aporte mensal <i class="pi pi-question-circle" v-tooltip.focus.top="'Valor que será investido já descontado o valor do aluguel'" tabindex="1"></i></label>
                 <InputGroup>
                     <InputGroupAddon>R$</InputGroupAddon>
-                    <InputNumber v-model="investimentValue" locale="pt-BR" :maxFractionDigits="2" />
+                    <InputNumber v-model="investimentValue" mode="decimal" locale="pt-BR" :maxFractionDigits="2" />
                 </InputGroup>
             </div>
             <div className="field col-12 md:col-6">
                 <label htmlFor="profitability">Rentabilidade líquida do investimento</label>
                 <InputGroup>
-                    <InputNumber v-model="profitability.value" locale="pt-BR" :maxFractionDigits="2" />
+                    <InputNumber v-model="profitability.value" mode="decimal" locale="pt-BR" :maxFractionDigits="2" />
                     <InputGroupAddon>%</InputGroupAddon>
                     <Dropdown v-model="profitability.option" :options="optionsRate" class="w-7rem" />
                 </InputGroup>
