@@ -15,6 +15,7 @@
         "primeflex": "^3.3.1",
         "primeicons": "^6.0.1",
         "primevue": "^3.52.0",
+        "v-money": "^0.8.1",
         "vue": "^3.2.41",
         "vue-google-adsense": "^2.0.0",
         "vue-router": "^4.1.5",
