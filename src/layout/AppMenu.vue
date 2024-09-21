@@ -9,9 +9,15 @@ const model = ref([
         items: [
             { label: 'Investimentos', icon: 'pi pi-fw pi-chart-line', to: '/simuladores/simulador-de-investimentos' },
             { label: 'Aporte Mensal', icon: 'pi pi-fw pi-calculator', to: '/simuladores/aporte-mensal' },
-            { label: 'Usufruto de Patrimônio', icon: 'pi pi-fw pi-replay', to: '/simuladores/usufruto' },
-            { label: 'Á Vista ou Parcelado', icon: 'pi pi-fw pi-shopping-cart', to: '/simuladores/compra-parcelada' },
-            { label: 'Financiar ou Alugar', icon: 'pi pi-fw pi-home', to: '/simuladores/financiar-ou-alugar' }
+            { label: 'Usufruto de Patrimônio', icon: 'pi pi-fw pi-replay', to: '/simuladores/usufruto' }
+        ]
+    },
+    {
+        label: 'Para Decidir',
+        items: [
+            { label: 'Á Vista ou Parcelado', icon: 'pi pi-fw pi-shopping-cart', to: '/para-decidir/compra-parcelada' },
+            { label: 'Financiar ou Alugar', icon: 'pi pi-fw pi-home', to: '/para-decidir/financiar-ou-alugar' }
+            // { label: 'Alugar ou FII?', icon: 'pi pi-fw pi-sync', to: '/para-decidir/alugar-ou-fundos-imobiliarios' }
         ]
     },
     {

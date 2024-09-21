@@ -10,7 +10,7 @@ const router = createRouter({
             children: [
                 {
                     path: '',
-                    redirect: { name: 'investiment-simulator' }
+                    component: () => import('@/views/Home.vue')
                 },
                 {
                     path: '/dashboard',
@@ -57,16 +57,27 @@ const router = createRouter({
                     path: 'usufruto',
                     name: 'usufruct-simulator',
                     component: () => import('@/views/simulators/UsufructSimulator.vue')
-                },
+                }
+            ]
+        },
+        {
+            path: '/para-decidir',
+            component: AppLayout,
+            children: [
                 {
                     path: 'compra-parcelada',
                     name: 'partial-payment-simulator',
-                    component: () => import('@/views/simulators/PartialPaymentSimulator.vue')
+                    component: () => import('@/views/to-decide/PartialPaymentSimulator.vue')
                 },
                 {
                     path: 'financiar-ou-alugar',
                     name: 'finance-tohire-invest-simulator',
-                    component: () => import('@/views/simulators/FinanceOrToHireSimulator.vue')
+                    component: () => import('@/views/to-decide/FinanceOrToHireSimulator.vue')
+                },
+                {
+                    path: 'alugar-ou-fundos-imobiliarios',
+                    name: 'tohire-reets-simulator',
+                    component: () => import('@/views/to-decide/ToHireOrReetsSimulator.vue')
                 }
             ]
         },
