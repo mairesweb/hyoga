@@ -19,6 +19,9 @@ export default {
         },
         savingsBro() {
             return '/layout/images/savings-bro.svg';
+        },
+        ManageMoneyBro() {
+            return '/layout/images/manage-money-bro.svg';
         }
     },
     methods: {
@@ -56,6 +59,16 @@ export default {
                 <div @click="goTo('/simuladores/usufruto')" class="card p-3 flex flex-column border-200 simulators-card cursor-pointer border-2 hover:border-primary transition-duration-300 transition-all" style="border-radius: 10px">
                     <img :src="savingsBro" class="w-10 mx-auto my-3" alt="Usufruto" />
                     <h4 class="text-900 text-center mb-3">Usufruto</h4>
+                </div>
+            </div>
+            <div class="col-12 lg:col-6 xl:col-3 mt-8 md:mt-0">
+                <div
+                    @click="goTo('/simuladores/financimanento-com-prestacoes-fixas')"
+                    class="card p-3 flex flex-column border-200 simulators-card cursor-pointer border-2 hover:border-primary transition-duration-300 transition-all"
+                    style="border-radius: 10px"
+                >
+                    <img :src="ManageMoneyBro" class="w-10 mx-auto my-3" alt="Prestações de Financiamento" />
+                    <h4 class="text-900 text-center mb-3">Prestações de Financiamento</h4>
                 </div>
             </div>
         </div>

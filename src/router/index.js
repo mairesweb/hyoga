@@ -57,6 +57,11 @@ const router = createRouter({
                     path: 'usufruto',
                     name: 'usufruct-simulator',
                     component: () => import('@/views/simulators/UsufructSimulator.vue')
+                },
+                {
+                    path: 'financiamento-com-prestacoes-fixas',
+                    name: 'financing-with-fixed-installments-simulator',
+                    component: () => import('@/views/simulators/FinancingWithFixedInstallmentsSimulator.vue')
                 }
             ]
         },
