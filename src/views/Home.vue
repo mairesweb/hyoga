@@ -42,19 +42,19 @@ export default {
                     class="card p-3 flex flex-column border-200 simulators-card cursor-pointer border-2 hover:border-primary transition-duration-300 transition-all"
                     style="border-radius: 10px"
                 >
-                    <img :src="investingBro" class="w-10 h-10 mx-auto my-3" alt="Investimentos" />
+                    <img :src="investingBro" class="w-10 mx-auto my-3" alt="Investimentos" />
                     <h4 class="text-900 text-center mb-3">Investimentos</h4>
                 </div>
             </div>
             <div class="col-12 lg:col-6 xl:col-3 mt-8 md:mt-0">
                 <div @click="goTo('/simuladores/aporte-mensal')" class="card p-3 flex flex-column border-200 simulators-card cursor-pointer border-2 hover:border-primary transition-duration-300 transition-all" style="border-radius: 10px">
-                    <img :src="refundBro" class="w-10 h-10 mx-auto my-5" alt="Aporte Mensal" />
+                    <img :src="refundBro" class="w-10 mx-auto my-3" alt="Aporte Mensal" />
                     <h4 class="text-900 text-center mb-3">Aporte Mensal</h4>
                 </div>
             </div>
             <div class="col-12 lg:col-6 xl:col-3 mt-8 md:mt-0">
                 <div @click="goTo('/simuladores/usufruto')" class="card p-3 flex flex-column border-200 simulators-card cursor-pointer border-2 hover:border-primary transition-duration-300 transition-all" style="border-radius: 10px">
-                    <img :src="savingsBro" class="w-10 h-10 mx-auto my-3" alt="Usufruto" />
+                    <img :src="savingsBro" class="w-10 mx-auto my-3" alt="Usufruto" />
                     <h4 class="text-900 text-center mb-3">Usufruto</h4>
                 </div>
             </div>
@@ -68,19 +68,19 @@ export default {
         <div class="grid justify-content-center mt-8 md:mt-0">
             <div class="col-12 lg:col-6 xl:col-3">
                 <div @click="goTo('/para-decidir/compra-parcelada')" class="card p-3 flex flex-column border-200 to-decide-card cursor-pointer border-2 hover:border-primary transition-duration-300 transition-all" style="border-radius: 10px">
-                    <img :src="forSale" class="w-10 h-10 mx-auto my-3" alt="free" />
+                    <img :src="forSale" class="w-10 mx-auto my-3" alt="free" />
                     <h4 class="text-900 text-center mb-3">À vista ou Financiado</h4>
                 </div>
             </div>
             <div class="col-12 lg:col-6 xl:col-3 mt-4 md:mt-0">
                 <div @click="goTo('/para-decidir/financiar-ou-alugar')" class="card p-3 flex flex-column border-200 to-decide-card cursor-pointer border-2 hover:border-primary transition-duration-300 transition-all" style="border-radius: 10px">
-                    <img :src="manageMoney" class="w-10 h-10 mx-auto my-3" alt="startup" />
+                    <img :src="manageMoney" class="w-10 mx-auto my-3" alt="startup" />
                     <h4 class="text-900 text-center mb-3">Financiar ou Alugar</h4>
                 </div>
             </div>
             <!--div class="col-12 lg:col-6 xl:col-3 mt-4 md:mt-0">
                 <div class="card p-3 flex flex-column border-200 to-decide-card cursor-pointer border-2 hover:border-primary transition-duration-300 transition-all" style="border-radius: 10px">
-                    <img src="investingBro" class="w-10 h-10 mx-auto my-3" alt="enterprise" />
+                    <img src="investingBro" class="w-10 mx-auto my-3" alt="enterprise" />
                     <h4 class="text-900 text-center mb-3">Alugar ou FII</h4>
                 </div>
             </div-->
@@ -94,7 +94,7 @@ export default {
         <div class="grid justify-content-center mt-8 md:mt-0">
             <div class="col-12 lg:col-6 xl:col-3">
                 <div @click="goTo('/graficos/liberdade-financeira')" class="card p-3 flex flex-column border-200 graphics-card cursor-pointer border-2 hover:border-primary transition-duration-300 transition-all" style="border-radius: 10px">
-                    <img :src="investingPana" class="w-10 h-10 mx-auto my-3" alt="free" />
+                    <img :src="investingPana" class="w-10 mx-auto my-3" alt="free" />
                     <h4 class="text-900 text-center mb-3">Liberdade Financeira</h4>
                 </div>
             </div>
