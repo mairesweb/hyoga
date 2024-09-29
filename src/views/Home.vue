@@ -63,7 +63,7 @@ export default {
             </div>
             <div class="col-12 lg:col-6 xl:col-3 mt-8 md:mt-0">
                 <div
-                    @click="goTo('/simuladores/financimanento-com-prestacoes-fixas')"
+                    @click="goTo('/simuladores/financiamento-com-prestacoes-fixas')"
                     class="card p-3 flex flex-column border-200 simulators-card cursor-pointer border-2 hover:border-primary transition-duration-300 transition-all"
                     style="border-radius: 10px"
                 >
