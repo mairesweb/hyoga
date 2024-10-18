@@ -2,6 +2,7 @@
 import MInputNumber from '@/components/MInputNumber.vue';
 import MainAdsenseBottom from '@/components/MainAdsenseBottom.vue';
 import { formatCurrency } from '@/utils/Numbers';
+import { calculateAliquot } from '@/utils/Functions';
 
 export default {
     name: 'InvestimentSimulator',
@@ -60,7 +61,7 @@ export default {
             this.resultSimulation.total = this.calculateFutureValue();
             this.resultSimulation.invested = this.calculateAmountInvested();
             this.resultSimulation.fees = this.resultSimulation.total - this.resultSimulation.invested;
-            this.resultSimulation.taxes = this.resultSimulation.fees * this.calculateAliquot();
+            this.resultSimulation.taxes = this.resultSimulation.fees * calculateAliquot(this.investimentType, this.getTime(), this.resultSimulation);
             this.resultSimulation.liquidity = this.resultSimulation.total - this.resultSimulation.taxes;
         },
         getTaxe() {
@@ -93,25 +94,6 @@ export default {
             const n = time;
 
             return Number((p + pmt * n).toFixed(2));
-        },
-        calculateAliquot() {
-            if (this.investimentType === 'tributado') {
-                if (this.getTime() <= 6) {
-                    this.resultSimulation.taxesPercentage = '22,5%';
-                    return 0.225;
-                } else if (this.getTime() <= 12) {
-                    this.resultSimulation.taxesPercentage = '20%';
-                    return 0.2;
-                } else if (this.getTime() <= 24) {
-                    this.resultSimulation.taxesPercentage = '17,5%';
-                    return 0.175;
-                } else {
-                    this.resultSimulation.taxesPercentage = '15%';
-                    return 0.15;
-                }
-            }
-
-            return 0;
         },
         convertTaxeToMonthly(taxe: number) {
             return Math.pow(1 + taxe / 100, 1 / 12) - 1;

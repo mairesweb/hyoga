@@ -1,6 +1,7 @@
 <script lang="ts">
 import MInputNumber from '@/components/MInputNumber.vue';
 import MainAdsenseBottom from '@/components/MainAdsenseBottom.vue';
+import { convertTaxeToMonthly } from '@/utils/Functions';
 
 export default {
     name: 'FinancialFreedomChart',
@@ -103,7 +104,7 @@ export default {
             this.result = [];
         },
         calculate() {
-            const profitability = this.profitability.option.name === 'a.m.' ? (this.profitability.value as number) / 100 : this.convertTaxeToMonthly(this.profitability.value as number);
+            const profitability = this.profitability.option.name === 'a.m.' ? (this.profitability.value as number) / 100 : convertTaxeToMonthly(this.profitability.value as number);
             const inflation = (this.inflation as number) / 100;
             const result = [];
             let equity = this.equity as number;
@@ -131,9 +132,6 @@ export default {
             }
 
             this.result = result;
-        },
-        convertTaxeToMonthly(taxe: number) {
-            return Math.pow(1 + taxe / 100, 1 / 12) - 1;
         }
     }
 };
