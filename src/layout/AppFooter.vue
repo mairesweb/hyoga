@@ -2,9 +2,10 @@
 
 <template>
     <div class="layout-footer">
-        <span class="mr-2">Finanças e Investimentos</span>
-        é
-        <span class="font-bold ml-2">Hyoga</span>
+        <span>
+            Finanças e Investimentos é
+            <router-link to="/"><b>Hyoga</b></router-link>
+        </span>
     </div>
 </template>
 <style lang="scss" scoped></style>
