@@ -10,7 +10,7 @@ const model = ref([
             { label: 'Investimentos', icon: 'pi pi-fw pi-chart-line', to: '/simuladores/simulador-de-investimentos' },
             { label: 'Aporte Mensal', icon: 'pi pi-fw pi-calculator', to: '/simuladores/aporte-mensal' },
             { label: 'Usufruto de Patrimônio', icon: 'pi pi-fw pi-replay', to: '/simuladores/usufruto' },
-            { label: 'Financiamento com Prestações Fixas', icon: 'pi pi-fw pi-home', to: '/simuladores/financiamento-com-prestacoes-fixas' }
+            { label: 'Prestações de Financiamento', icon: 'pi pi-fw pi-calculator', to: '/simuladores/financiamento-com-prestacoes-fixas' }
         ]
     },
     {
