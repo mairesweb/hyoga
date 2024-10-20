@@ -16,7 +16,7 @@ const model = ref([
     {
         label: 'Para Decidir',
         items: [
-            { label: 'Á Vista ou Parcelado', icon: 'pi pi-fw pi-shopping-cart', to: '/para-decidir/compra-parcelada' },
+            { label: 'À Vista ou Parcelado', icon: 'pi pi-fw pi-shopping-cart', to: '/para-decidir/compra-parcelada' },
             { label: 'Financiar ou Alugar', icon: 'pi pi-fw pi-home', to: '/para-decidir/financiar-ou-alugar' }
             // { label: 'Alugar ou FII?', icon: 'pi pi-fw pi-sync', to: '/para-decidir/alugar-ou-fundos-imobiliarios' }
         ]
