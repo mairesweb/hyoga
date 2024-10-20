@@ -1,40 +1,45 @@
 {
-    "name": "hyoga",
-    "version": "3.10.0",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "preview": "vite preview",
-        "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
-    },
-    "dependencies": {
-        "@unhead/vue": "^1.9.11",
-        "chart.js": "3.3.2",
-        "dexie": "^4.0.4",
-        "pinia": "^2.1.7",
-        "primeflex": "^3.3.1",
-        "primeicons": "^6.0.1",
-        "primevue": "^3.52.0",
-        "v-money": "^0.8.1",
-        "vue": "^3.2.41",
-        "vue-google-adsense": "^2.0.0",
-        "vue-router": "^4.1.5",
-        "vue-scriptx": "^0.2.5"
-    },
-    "devDependencies": {
-        "@rushstack/eslint-patch": "^1.1.4",
-        "@tsconfig/node18": "^18.2.4",
-        "@types/node": "^20.12.7",
-        "@vitejs/plugin-vue": "^4.1.0",
-        "@vue/eslint-config-prettier": "^7.0.0",
-        "@vue/eslint-config-typescript": "^13.0.0",
-        "@vue/tsconfig": "^0.5.1",
-        "eslint": "^8.22.0",
-        "eslint-plugin-vue": "^9.3.0",
-        "prettier": "^2.7.1",
-        "sass": "^1.55.0",
-        "typescript": "^5.4.5",
-        "vite": "^4.2.1",
-        "vue-tsc": "^2.0.14"
-    }
+  "name": "hyoga",
+  "version": "3.10.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@unhead/vue": "^1.9.11",
+    "chart.js": "3.3.2",
+    "dexie": "^4.0.4",
+    "pinia": "^2.1.7",
+    "primeflex": "^3.3.1",
+    "primeicons": "^6.0.1",
+    "primevue": "^3.52.0",
+    "v-money": "^0.8.1",
+    "vue": "^3.2.41",
+    "vue-google-adsense": "^2.0.0",
+    "vue-router": "^4.1.5",
+    "vue-scriptx": "^0.2.5"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.1.4",
+    "@tsconfig/node18": "^18.2.4",
+    "@types/jest": "^29.5.13",
+    "@types/node": "^20.12.7",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vue/eslint-config-typescript": "^13.0.0",
+    "@vue/tsconfig": "^0.5.1",
+    "eslint": "^8.22.0",
+    "eslint-plugin-vue": "^9.3.0",
+    "jest": "^29.7.0",
+    "prettier": "^2.7.1",
+    "sass": "^1.55.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5",
+    "vite": "^4.2.1",
+    "vue-tsc": "^2.0.14"
+  }
 }
